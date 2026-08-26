@@ -441,8 +441,9 @@ section{position:relative;padding:120px 0;}
 .filter-pill:hover{border-color:var(--violet);color:var(--text);background:linear-gradient(120deg, rgba(124,92,255,.16), rgba(53,193,255,.1));}
 .filter-pill.active{background:var(--text);color:var(--black);border-color:var(--text);}
 
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
-@media(max-width:800px){.work-grid{grid-template-columns:1fr;}}
+.work-grid{display:grid;grid-template-columns:1fr;gap:22px;}
+@media(min-width:700px){.work-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1200px){.work-grid{grid-template-columns:repeat(3,1fr);gap:26px;}}
 .work-grid .card.feature{grid-column:1/-1;aspect-ratio:16/8;}
 .card{
   position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;cursor:pointer;
@@ -551,8 +552,9 @@ section{position:relative;padding:120px 0;}
 @media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:36px;}}
 .about-photo{aspect-ratio:4/5;border-radius:18px;background:linear-gradient(150deg, rgba(124,92,255,.4), rgba(53,193,255,.25) 60%, rgba(226,59,143,.35)), url('https://picsum.photos/seed/editorportrait/700/900') center/cover;position:relative;overflow:hidden;}
 .about-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(200deg,#1c1c22,transparent 60%);}
+.craft-grid{display:flex;flex-direction:column;gap:40px;}
 .craft-photo{
-  aspect-ratio:4/5;border-radius:18px;position:relative;overflow:hidden;
+  aspect-ratio:16/9;border-radius:18px;position:relative;overflow:hidden;width:100%;
   background:linear-gradient(160deg, rgba(53,193,255,.35), rgba(10,10,12,.85)), url('https://picsum.photos/seed/craftdesk/700/900') center/cover;
 }
 .testimonial-photo{
@@ -790,7 +792,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <!-- THE CRAFT -->
 <section class="atmo-blue" id="craft">
-  <div class="container about-grid reveal">
+  <div class="container craft-grid reveal">
     <div class="craft-photo" data-cursor="VIEW" id="craftPhoto">
       <div class="editable-overlay" data-edit-image="craftPhoto"><span>TAP TO CHANGE PHOTO</span></div>
     </div>
