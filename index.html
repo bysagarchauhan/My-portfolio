@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Sagar Chauhan — Video Editor | BYSAGARCHAUHAN</title>
 <meta name="description" content="Sagar Chauhan is a video editor specializing in short-form, long-form, cinematic and creative video content.">
-<meta name="keywords" content="video editor, video editing, reel editing, short-form editing, long-form editing, cinematic editing, YouTube video editor, Instagram Reels editor, TikTok video editor, freelance video editor, motion graphics, kinetic typography, color grading, color grade, VFX artist, visual effects, compositing, sound design, beat sync editing, speed ramping, retention editing, hook editing, pacing editor, storytelling editor, automotive video editing, fan edit, music video editing, lyric video editor, wedding film editing, corporate video editing, brand video editing, product video editing, ad editing, documentary editing, vlog editing, podcast editing, gaming edits, sports edits, anime edits, Premiere Pro editor, After Effects artist, DaVinci Resolve colorist, Final Cut Pro editor, CapCut editor, B-roll editing, jump cuts, match cuts, green screen editing, rotoscoping, masking, keyframe animation, title animation, lower thirds, audio mixing, voiceover editing, noise reduction, LUT grading, cinematic LUTs, slow motion editing, time remapping, multicam editing, 4K video editing, vertical video editing, YouTube Shorts editor, social media video editing, channel branding, intro outro design, thumbnail design, captions and subtitles, Sagar Chauhan, BYSAGARCHAUHAN, video editing portfolio, hire a video editor, professional video editor">
 <meta property="og:title" content="Sagar Chauhan — Video Editor | BYSAGARCHAUHAN">
 <meta property="og:description" content="Short-form • Long-form • Cinematic • Creative Content">
 <meta property="og:type" content="website">
-
+<meta property="og:image" content="assets/temp-portfolio-neon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0c'/%3E%3Ctext x='50' y='66' font-family='Arial' font-weight='700' font-size='54' fill='%237c5cff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -104,12 +104,13 @@ body.modal-lock{overflow:hidden;}
 .edit-fab{
   position:fixed;bottom:24px;right:24px;z-index:3000;
   width:52px;height:52px;border-radius:50%;background:var(--violet);color:#fff;
-  display:none;align-items:center;justify-content:center;font-size:20px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
   box-shadow:0 10px 30px rgba(124,92,255,.5);transition:transform .3s var(--ease);
 }
-body.admin-mode .edit-fab{display:flex;}
 .edit-fab:hover{transform:scale(1.08);}
 body.edit-mode .edit-fab{background:var(--crimson);}
+#editFab{display:none;}
+body.edit-mode #editFab{display:flex;}
 #exportFab{display:none;right:88px;}
 body.edit-mode #exportFab{display:flex;background:var(--blue);}
 .edit-pw-overlay{
@@ -137,8 +138,6 @@ body.edit-mode{padding-top:0;}
 }
 body.edit-mode .editable-overlay{display:flex;}
 .editable-overlay span{font-family:var(--disp);font-size:11px;letter-spacing:.08em;color:#fff;background:rgba(124,92,255,.85);padding:8px 14px;border-radius:100px;}
-.editable-overlay{gap:10px;}
-.editable-overlay .edit-video-link{background:rgba(53,193,255,.85);}
 .hero-media, .about-photo, .card{position:relative;}
 body.edit-mode [contenteditable="true"]{outline:1px dashed rgba(124,92,255,.6);outline-offset:4px;border-radius:4px;}
 [contenteditable="true"] *{font-family:inherit !important;font-size:inherit !important;font-weight:inherit !important;color:inherit !important;background:none !important;}
@@ -421,7 +420,7 @@ section{position:relative;padding:120px 0;}
 
 /* ============ MARQUEE STRIP ============ */
 .marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;background:var(--charcoal);}
-.marquee-track{display:flex;width:max-content;animation:marquee 190s linear infinite;}
+.marquee-track{display:flex;width:max-content;animation:marquee 22s linear infinite;}
 .marquee-track span{
   font-family:var(--disp);font-weight:600;font-size:clamp(20px,3vw,32px);letter-spacing:.02em;
   color:var(--text-faint);padding:0 34px;white-space:nowrap;display:flex;align-items:center;gap:34px;
@@ -530,8 +529,8 @@ section{position:relative;padding:120px 0;}
 /* ============ RAW/FINAL ============ */
 .compare{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--line);user-select:none;}
 .compare-raw,.compare-final{position:absolute;inset:0;}
-.compare-raw{background:linear-gradient(rgba(30,30,34,1),rgba(20,20,24,1));filter:saturate(.25) contrast(.8) brightness(.75);}
-.compare-final{background:linear-gradient(160deg,#3d2a66,#0d1a2e 60%,#5a1a3a);clip-path:inset(0 0 0 50%);}
+.compare-raw{background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)),var(--compare-img,url('assets/temp-desk-setup.jpg')) center/cover;filter:saturate(.25) contrast(.8) brightness(.75);}
+.compare-final{background:linear-gradient(160deg,rgba(61,42,102,.55),rgba(13,26,46,.35) 60%,rgba(90,26,58,.45)),var(--compare-img,url('assets/temp-desk-setup.jpg')) center/cover;clip-path:inset(0 0 0 50%);}
 .compare-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;cursor:ew-resize;}
 .compare-handle::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.4);}
 .compare-label{position:absolute;top:20px;font-family:var(--disp);font-size:11px;letter-spacing:.15em;padding:6px 12px;border-radius:100px;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);}
@@ -548,8 +547,16 @@ section{position:relative;padding:120px 0;}
 /* ============ ABOUT ============ */
 .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center;}
 @media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:36px;}}
-.about-photo{aspect-ratio:4/5;border-radius:18px;background:linear-gradient(150deg,var(--violet),var(--blue) 60%,var(--magenta));position:relative;overflow:hidden;}
+.about-photo{aspect-ratio:4/5;border-radius:18px;background:linear-gradient(150deg, rgba(124,92,255,.4), rgba(53,193,255,.25) 60%, rgba(226,59,143,.35)), url('https://picsum.photos/seed/editorportrait/700/900') center/cover;position:relative;overflow:hidden;}
 .about-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(200deg,#1c1c22,transparent 60%);}
+.craft-photo{
+  aspect-ratio:4/5;border-radius:18px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg, rgba(53,193,255,.35), rgba(10,10,12,.85)), url('https://picsum.photos/seed/craftdesk/700/900') center/cover;
+}
+.testimonial-photo{
+  aspect-ratio:4/5;border-radius:18px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg, rgba(226,59,143,.3), rgba(10,10,12,.85)), url('https://picsum.photos/seed/clientcall/700/900') center/cover;
+}
 .about-text p{color:var(--text-dim);font-size:17px;line-height:1.75;margin-bottom:18px;}
 .about-socials{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;}
 .social-chip{font-family:var(--disp);font-size:12px;letter-spacing:.06em;padding:10px 18px;border:1px solid var(--line-strong);border-radius:100px;transition:border-color .3s,background .3s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;}
@@ -637,7 +644,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 </style>
 </head>
-<body class="admin-mode">
+<body>
 
 <div class="grain"></div>
 <div class="light-leak" id="lightLeak"></div>
@@ -645,7 +652,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <div class="edit-banner">✎ EDIT MODE — tap any photo to change it, click text to edit. <b>Changes only save to THIS browser</b> — click "⬇ Export Site" below when done, then upload that file to replace index.html (no GitHub commands needed).</div>
 <div class="edit-fab" id="exportFab" title="Download updated site file">⬇</div>
-<div class="edit-fab" id="editFab" title="Exit edit mode">✕</div>
+<div class="edit-fab" id="editFab" title="Edit this site">✎</div>
 <div class="email-toast" id="emailToast">EMAIL COPIED — sagarchauhan.exe@gmail.com</div>
 <div class="edit-pw-overlay" id="editPwOverlay">
   <div class="edit-pw-box">
@@ -657,33 +664,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <div class="modal-overlay" id="projectModal">
   <div class="modal-box">
-    <div class="modal-media" id="modalMedia" style="background: linear-gradient(160deg, rgb(53, 193, 255), rgb(17, 17, 17) 70%);"><div class="modal-close" id="modalClose">✕</div></div>
+    <div class="modal-media" id="modalMedia">
+      <div class="modal-close" id="modalClose">✕</div>
+    </div>
     <div class="modal-body">
-      <div class="modal-cat" id="modalCat">Coming soon</div>
-      <div class="modal-title" id="modalTitle">Coming soon</div>
-      <p class="modal-desc" id="modalDesc">A fast-paced short-form edit built for retention — strong hook, dynamic captions, and tight pacing throughout.</p>
+      <div class="modal-cat" id="modalCat"></div>
+      <div class="modal-title" id="modalTitle" data-editable="modal.title"></div>
+      <p class="modal-desc" id="modalDesc" data-editable="modal.desc"></p>
       <div class="modal-meta">
-        <div class="modal-meta-item"><h5>Year</h5><p id="modalYear">2026</p></div>
-        <div class="modal-meta-item"><h5>Type</h5><p id="modalType">Client Project</p></div>
-        <div class="modal-meta-item"><h5>Role</h5><p id="modalRole">Editor</p></div>
+        <div class="modal-meta-item"><h5>Year</h5><p id="modalYear"></p></div>
+        <div class="modal-meta-item"><h5>Type</h5><p id="modalType"></p></div>
+        <div class="modal-meta-item"><h5>Role</h5><p id="modalRole"></p></div>
       </div>
-      <div class="modal-tags" id="modalTags"><span>Coming soon</span></div>
+      <div class="modal-tags" id="modalTags"></div>
     </div>
   </div>
 </div>
 
-<div id="loader" class="">
+<div id="loader">
   <div class="loader-mark">BYSAGARCHAUHAN</div>
   <div class="loader-role">VIDEO EDITOR</div>
   <div class="loader-bar"></div>
 </div>
 
 <!-- NAV -->
-<nav class="nav scrolled" id="nav">
+<nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="#home" class="nav-logo">BYSAGARCHAUHAN</a>
+    <a href="#home" class="nav-logo" id="navLogo" data-editable="brand.logo">BYSAGARCHAUHAN</a>
     <ul class="nav-links">
-      <li><a href="#work" class="nav-link active-link">WORK</a></li>
+      <li><a href="#work" class="nav-link">WORK</a></li>
       <li><a href="#services" class="nav-link">SERVICES</a></li>
       <li><a href="#craft" class="nav-link">CRAFT</a></li>
       <li><a href="#about" class="nav-link">ABOUT</a></li>
@@ -714,20 +723,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="hero-orb o2"></div>
   <div class="container hero-inner">
     <div>
-      <div class="hero-meta"><span class="dot"></span> BYSAGARCHAUHAN — VIDEO EDITOR / POST-PRODUCTION</div>
+      <div class="hero-meta"><span class="dot"></span> <span data-editable="hero.eyebrow">BYSAGARCHAUHAN — VIDEO EDITOR / POST-PRODUCTION</span></div>
       <h1>
-        <span class="line"><span>VIDEO</span></span>
-        <span class="line"><span>EDITOR.</span></span>
+        <span class="line"><span data-editable="hero.title1">VIDEO</span></span>
+        <span class="line"><span data-editable="hero.title2">EDITOR.</span></span>
       </h1>
-      <div class="hero-sub">Short-form • Long-form • Cinematic • Creative Content</div>
-      <p class="hero-desc" id="heroDesc">I turn raw footage, ideas and music into engaging visual stories designed to be watched, remembered and shared.</p>
+      <div class="hero-sub" data-editable="hero.sub">Short-form • Long-form • Cinematic • Creative Content</div>
+      <p class="hero-desc" id="heroDesc" data-editable="hero.desc">I turn raw footage, ideas and music into engaging visual stories designed to be watched, remembered and shared.</p>
       <div class="hero-ctas">
         <a href="#work" class="btn-primary">VIEW MY WORK →</a>
         <a href="mailto:sagarchauhan.exe@gmail.com?subject=Project%20Inquiry" class="btn-ghost">HIRE ME →</a>
       </div>
     </div>
     <div class="hero-media" data-cursor="WATCH">
-      <img src="" alt="Sagar Chauhan — Video Editor" loading="eager" id="heroImg" style="background:linear-gradient(160deg,#1d1d22,#0a0a0c);min-height:320px;">
+      <img src="assets/temp-desk-setup.jpg" alt="Sagar Chauhan — Video Editor" loading="eager" id="heroImg" onerror="this.onerror=null;this.src='https://picsum.photos/seed/sagareditor/800/1000';">
       <div class="hero-media-frame"></div>
       <div class="hero-media-tag">
         <div class="rec"><span class="dot"></span> PROFILE</div>
@@ -742,19 +751,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- SHOWREEL -->
 <section class="atmo-purple" id="showreel-section">
   <div class="container">
-    <div class="showreel-head reveal in">
+    <div class="showreel-head reveal">
       <div>
-        <div class="eyebrow">Reel</div>
-        <h2 class="section-title">SHOWREEL<br><span class="accent">/ 2026</span></h2>
+        <div class="eyebrow" data-editable="showreel.eyebrow">Reel</div>
+        <h2 class="section-title" data-editable="showreel.title">SHOWREEL<br><span class="accent">/ 2026</span></h2>
       </div>
     </div>
-    <div class="showreel-player reveal in" data-cursor="PLAY" id="showreelPlayer">
+    <div class="showreel-player reveal" data-cursor="PLAY" id="showreelPlayer">
       <!-- TEMP video — swap src with your real showreel export later -->
-      <video id="showreelVideo" muted="" loop="" playsinline="" preload="metadata" poster="">
+      <video id="showreelVideo" muted loop playsinline preload="metadata" poster="assets/temp-portfolio-title.webp">
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
       </video>
       <div class="edit-video-btn" data-edit-video="showreelVideo" onclick="event.stopPropagation();">CHANGE VIDEO LINK</div>
-      <div class="showreel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+      <div class="showreel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="showreel-meta"><span>SHOWREEL 2026</span><span id="showreelTime">00:00 / 00:00</span></div>
       <div class="showreel-progress"><div class="showreel-progress-bar" id="showreelBar"></div></div>
     </div>
@@ -762,165 +771,31 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </section>
 
 <div class="marquee-wrap">
-  <div class="marquee-track" id="marqueeTrack"><span class="accent-word">SHORT-FORM<span class="sep"></span></span><span class="">LONG-FORM<span class="sep"></span></span><span class="accent-word">CINEMATIC<span class="sep"></span></span><span class="">BEAT SYNC<span class="sep"></span></span><span class="accent-word">COLOR GRADE<span class="sep"></span></span><span class="">MOTION DESIGN<span class="sep"></span></span><span class="accent-word">VFX<span class="sep"></span></span><span class="">RETENTION EDITING<span class="sep"></span></span><span class="accent-word">SPEED RAMPING<span class="sep"></span></span><span class="">SOUND DESIGN<span class="sep"></span></span><span class="accent-word">KINETIC TYPOGRAPHY<span class="sep"></span></span><span class="">COMPOSITING<span class="sep"></span></span><span class="accent-word">REEL EDITING<span class="sep"></span></span><span class="">YOUTUBE EDITING<span class="sep"></span></span><span class="accent-word">INSTAGRAM REELS<span class="sep"></span></span><span class="">PODCAST EDITING<span class="sep"></span></span><span class="accent-word">WEDDING FILMS<span class="sep"></span></span><span class="">CORPORATE VIDEOS<span class="sep"></span></span><span class="accent-word">MUSIC VIDEOS<span class="sep"></span></span><span class="">VLOG EDITING<span class="sep"></span></span><span class="accent-word">TRANSITIONS<span class="sep"></span></span><span class="">CAPTIONS &amp; SUBTITLES<span class="sep"></span></span><span class="accent-word">THUMBNAIL DESIGN<span class="sep"></span></span><span class="">PREMIERE PRO<span class="sep"></span></span><span class="accent-word">AFTER EFFECTS<span class="sep"></span></span><span class="">DAVINCI RESOLVE<span class="sep"></span></span><span class="accent-word">FINAL CUT PRO<span class="sep"></span></span><span class="">CAPCUT<span class="sep"></span></span><span class="accent-word">CONTENT CREATION<span class="sep"></span></span><span class="">FAN EDITS<span class="sep"></span></span><span class="accent-word">AUTOMOTIVE EDITING<span class="sep"></span></span><span class="">TRAVEL EDITS<span class="sep"></span></span><span class="accent-word">PRODUCT VIDEOS<span class="sep"></span></span><span class="">AD EDITING<span class="sep"></span></span><span class="accent-word">BRAND VIDEOS<span class="sep"></span></span><span class="">DOCUMENTARY EDITING<span class="sep"></span></span><span class="accent-word">GAMING EDITS<span class="sep"></span></span><span class="">SPORTS EDITS<span class="sep"></span></span><span class="accent-word">ANIME EDITS<span class="sep"></span></span><span class="">LYRIC VIDEOS<span class="sep"></span></span><span class="accent-word">HOOK WRITING<span class="sep"></span></span><span class="">PACING<span class="sep"></span></span><span class="accent-word">STORYTELLING<span class="sep"></span></span><span class="">RETENTION HOOKS<span class="sep"></span></span><span class="accent-word">VISUAL EFFECTS<span class="sep"></span></span><span class="">GREEN SCREEN<span class="sep"></span></span><span class="accent-word">ROTOSCOPING<span class="sep"></span></span><span class="">MASKING<span class="sep"></span></span><span class="accent-word">KEYFRAME ANIMATION<span class="sep"></span></span><span class="">TITLE ANIMATION<span class="sep"></span></span><span class="accent-word">LOWER THIRDS<span class="sep"></span></span><span class="">AUDIO MIXING<span class="sep"></span></span><span class="accent-word">VOICEOVER EDITING<span class="sep"></span></span><span class="">NOISE REDUCTION<span class="sep"></span></span><span class="accent-word">LUT GRADING<span class="sep"></span></span><span class="">FILM LOOK<span class="sep"></span></span><span class="accent-word">SLOW MOTION<span class="sep"></span></span><span class="">TIME REMAPPING<span class="sep"></span></span><span class="accent-word">MULTICAM EDITING<span class="sep"></span></span><span class="">PROXY WORKFLOW<span class="sep"></span></span><span class="accent-word">4K EDITING<span class="sep"></span></span><span class="">VERTICAL VIDEO<span class="sep"></span></span><span class="accent-word">YOUTUBE SHORTS<span class="sep"></span></span><span class="">TIKTOK EDITING<span class="sep"></span></span><span class="accent-word">REELS EDITOR<span class="sep"></span></span><span class="">FREELANCE EDITOR<span class="sep"></span></span><span class="accent-word">SOCIAL MEDIA EDITING<span class="sep"></span></span><span class="">CINEMATIC LUTS<span class="sep"></span></span><span class="accent-word">B-ROLL EDITING<span class="sep"></span></span><span class="">JUMP CUTS<span class="sep"></span></span><span class="accent-word">MATCH CUTS<span class="sep"></span></span><span class="">SCREEN RECORDING EDITS<span class="sep"></span></span><span class="accent-word">PHOTO EDITING<span class="sep"></span></span><span class="">THUMBNAIL DESIGN<span class="sep"></span></span><span class="accent-word">CHANNEL BRANDING<span class="sep"></span></span><span class="">INTRO &amp; OUTRO DESIGN<span class="sep"></span></span><span class="accent-word">SHORT-FORM<span class="sep"></span></span><span class="">LONG-FORM<span class="sep"></span></span><span class="accent-word">CINEMATIC<span class="sep"></span></span><span class="">BEAT SYNC<span class="sep"></span></span><span class="accent-word">COLOR GRADE<span class="sep"></span></span><span class="">MOTION DESIGN<span class="sep"></span></span><span class="accent-word">VFX<span class="sep"></span></span><span class="">RETENTION EDITING<span class="sep"></span></span><span class="accent-word">SPEED RAMPING<span class="sep"></span></span><span class="">SOUND DESIGN<span class="sep"></span></span><span class="accent-word">KINETIC TYPOGRAPHY<span class="sep"></span></span><span class="">COMPOSITING<span class="sep"></span></span><span class="accent-word">REEL EDITING<span class="sep"></span></span><span class="">YOUTUBE EDITING<span class="sep"></span></span><span class="accent-word">INSTAGRAM REELS<span class="sep"></span></span><span class="">PODCAST EDITING<span class="sep"></span></span><span class="accent-word">WEDDING FILMS<span class="sep"></span></span><span class="">CORPORATE VIDEOS<span class="sep"></span></span><span class="accent-word">MUSIC VIDEOS<span class="sep"></span></span><span class="">VLOG EDITING<span class="sep"></span></span><span class="accent-word">TRANSITIONS<span class="sep"></span></span><span class="">CAPTIONS &amp; SUBTITLES<span class="sep"></span></span><span class="accent-word">THUMBNAIL DESIGN<span class="sep"></span></span><span class="">PREMIERE PRO<span class="sep"></span></span><span class="accent-word">AFTER EFFECTS<span class="sep"></span></span><span class="">DAVINCI RESOLVE<span class="sep"></span></span><span class="accent-word">FINAL CUT PRO<span class="sep"></span></span><span class="">CAPCUT<span class="sep"></span></span><span class="accent-word">CONTENT CREATION<span class="sep"></span></span><span class="">FAN EDITS<span class="sep"></span></span><span class="accent-word">AUTOMOTIVE EDITING<span class="sep"></span></span><span class="">TRAVEL EDITS<span class="sep"></span></span><span class="accent-word">PRODUCT VIDEOS<span class="sep"></span></span><span class="">AD EDITING<span class="sep"></span></span><span class="accent-word">BRAND VIDEOS<span class="sep"></span></span><span class="">DOCUMENTARY EDITING<span class="sep"></span></span><span class="accent-word">GAMING EDITS<span class="sep"></span></span><span class="">SPORTS EDITS<span class="sep"></span></span><span class="accent-word">ANIME EDITS<span class="sep"></span></span><span class="">LYRIC VIDEOS<span class="sep"></span></span><span class="accent-word">HOOK WRITING<span class="sep"></span></span><span class="">PACING<span class="sep"></span></span><span class="accent-word">STORYTELLING<span class="sep"></span></span><span class="">RETENTION HOOKS<span class="sep"></span></span><span class="accent-word">VISUAL EFFECTS<span class="sep"></span></span><span class="">GREEN SCREEN<span class="sep"></span></span><span class="accent-word">ROTOSCOPING<span class="sep"></span></span><span class="">MASKING<span class="sep"></span></span><span class="accent-word">KEYFRAME ANIMATION<span class="sep"></span></span><span class="">TITLE ANIMATION<span class="sep"></span></span><span class="accent-word">LOWER THIRDS<span class="sep"></span></span><span class="">AUDIO MIXING<span class="sep"></span></span><span class="accent-word">VOICEOVER EDITING<span class="sep"></span></span><span class="">NOISE REDUCTION<span class="sep"></span></span><span class="accent-word">LUT GRADING<span class="sep"></span></span><span class="">FILM LOOK<span class="sep"></span></span><span class="accent-word">SLOW MOTION<span class="sep"></span></span><span class="">TIME REMAPPING<span class="sep"></span></span><span class="accent-word">MULTICAM EDITING<span class="sep"></span></span><span class="">PROXY WORKFLOW<span class="sep"></span></span><span class="accent-word">4K EDITING<span class="sep"></span></span><span class="">VERTICAL VIDEO<span class="sep"></span></span><span class="accent-word">YOUTUBE SHORTS<span class="sep"></span></span><span class="">TIKTOK EDITING<span class="sep"></span></span><span class="accent-word">REELS EDITOR<span class="sep"></span></span><span class="">FREELANCE EDITOR<span class="sep"></span></span><span class="accent-word">SOCIAL MEDIA EDITING<span class="sep"></span></span><span class="">CINEMATIC LUTS<span class="sep"></span></span><span class="accent-word">B-ROLL EDITING<span class="sep"></span></span><span class="">JUMP CUTS<span class="sep"></span></span><span class="accent-word">MATCH CUTS<span class="sep"></span></span><span class="">SCREEN RECORDING EDITS<span class="sep"></span></span><span class="accent-word">PHOTO EDITING<span class="sep"></span></span><span class="">THUMBNAIL DESIGN<span class="sep"></span></span><span class="accent-word">CHANNEL BRANDING<span class="sep"></span></span><span class="">INTRO &amp; OUTRO DESIGN<span class="sep"></span></span></div>
+  <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
 <!-- SAMPLE WORK -->
 <section id="work">
   <div class="container">
-    <div class="reveal in">
-      <div class="eyebrow">Selected Work</div>
-      <h2 class="section-title">SAMPLE<br>WORK.</h2>
+    <div class="reveal">
+      <div class="eyebrow" data-editable="work.eyebrow">Selected Work</div>
+      <h2 class="section-title" data-editable="work.title">SAMPLE<br>WORK.</h2>
     </div>
-    <div class="work-grid reveal in" id="workGrid">
-    <div class="card cardpop feature" data-cursor="VIEW" data-project="Web Slinger" style="animation-delay:0ms">
-      <div class="card-media" style="background-image:linear-gradient(160deg,#e4432e,#111 70%);background-size:cover;background-position:center;"><div class="card-scan"></div></div>
-      <div class="editable-overlay" data-edit-project-image="Web Slinger"><span>TAP TO CHANGE IMAGE</span><span class="edit-video-link" data-edit-project-video="Web Slinger" onclick="event.stopPropagation();">or set video path</span></div>
-      <div class="card-year">2026</div>
-      <div class="card-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-      <div class="card-info">
-        <div class="card-cat" data-cat-edit="Web Slinger">Fan Edit</div>
-        <div class="card-title" data-title-edit="Web Slinger">Web Slinger</div>
-        <div class="card-tags"><span class="tag-editable" data-tag-remove="Web Slinger|||0">Fan Edit <b>×</b></span><span class="tag-editable" data-tag-remove="Web Slinger|||1">VFX <b>×</b></span><span class="tag-editable" data-tag-remove="Web Slinger|||2">Beat Sync <b>×</b></span><span class="tag-add" data-tag-add="Web Slinger">+ ADD TAG</span></div>
-      </div>
-    </div>
-  
-    <div class="card cardpop feature" data-cursor="VIEW" data-project="Porsche 911" style="animation-delay:90ms">
-      <div class="card-media" style="background-image:linear-gradient(160deg,#7c5cff,#111 70%);background-size:cover;background-position:center;"><div class="card-scan"></div></div>
-      <div class="editable-overlay" data-edit-project-image="Porsche 911"><span>TAP TO CHANGE IMAGE</span><span class="edit-video-link" data-edit-project-video="Porsche 911" onclick="event.stopPropagation();">or set video path</span></div>
-      <div class="card-year">2026</div>
-      <div class="card-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-      <div class="card-info">
-        <div class="card-cat" data-cat-edit="Porsche 911">Coming soon</div>
-        <div class="card-title" data-title-edit="Porsche 911">Coming soon</div>
-        <div class="card-tags"><span class="tag-add" data-tag-add="Porsche 911">+ ADD TAG</span></div>
-      </div>
-    </div>
-  
-    <div class="card cardpop " data-cursor="VIEW" data-project="Afterglow" style="animation-delay:180ms">
-      <div class="card-media" style="background-image:linear-gradient(160deg,#e23b8f,#111 70%);background-size:cover;background-position:center;"><div class="card-scan"></div></div>
-      <div class="editable-overlay" data-edit-project-image="Afterglow"><span>TAP TO CHANGE IMAGE</span><span class="edit-video-link" data-edit-project-video="Afterglow" onclick="event.stopPropagation();">or set video path</span></div>
-      <div class="card-year">2026</div>
-      <div class="card-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-      <div class="card-info">
-        <div class="card-cat" data-cat-edit="Afterglow">Coming soon</div>
-        <div class="card-title" data-title-edit="Afterglow">Coming soon</div>
-        <div class="card-tags"><span class="tag-editable" data-tag-remove="Afterglow|||0">Coming soon <b>×</b></span><span class="tag-add" data-tag-add="Afterglow">+ ADD TAG</span></div>
-      </div>
-    </div>
-  
-    <div class="card cardpop " data-cursor="VIEW" data-project="Midnight Run" style="animation-delay:270ms">
-      <div class="card-media" style="background-image:linear-gradient(160deg,#35c1ff,#111 70%);background-size:cover;background-position:center;"><div class="card-scan"></div></div>
-      <div class="editable-overlay" data-edit-project-image="Midnight Run"><span>TAP TO CHANGE IMAGE</span><span class="edit-video-link" data-edit-project-video="Midnight Run" onclick="event.stopPropagation();">or set video path</span></div>
-      <div class="card-year">2026</div>
-      <div class="card-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-      <div class="card-info">
-        <div class="card-cat" data-cat-edit="Midnight Run">Coming soon</div>
-        <div class="card-title" data-title-edit="Midnight Run">Coming soon</div>
-        <div class="card-tags"><span class="tag-editable" data-tag-remove="Midnight Run|||0">Coming soon <b>×</b></span><span class="tag-add" data-tag-add="Midnight Run">+ ADD TAG</span></div>
-      </div>
-    </div>
-  
-    <div class="card cardpop " data-cursor="VIEW" data-project="Echo Chamber" style="animation-delay:360ms">
-      <div class="card-media" style="background-image:linear-gradient(160deg,#f7943d,#111 70%);background-size:cover;background-position:center;"><div class="card-scan"></div></div>
-      <div class="editable-overlay" data-edit-project-image="Echo Chamber"><span>TAP TO CHANGE IMAGE</span><span class="edit-video-link" data-edit-project-video="Echo Chamber" onclick="event.stopPropagation();">or set video path</span></div>
-      <div class="card-year">2025</div>
-      <div class="card-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-      <div class="card-info">
-        <div class="card-cat" data-cat-edit="Echo Chamber">Coming soon</div>
-        <div class="card-title" data-title-edit="Echo Chamber">Coming soon</div>
-        <div class="card-tags"><span class="tag-editable" data-tag-remove="Echo Chamber|||0">Coming soon <b>×</b></span><span class="tag-add" data-tag-add="Echo Chamber">+ ADD TAG</span></div>
-      </div>
-    </div>
-  
-    <div class="card cardpop " data-cursor="VIEW" data-project="Rewind" style="animation-delay:450ms">
-      <div class="card-media" style="background-image:linear-gradient(160deg,#e4432e,#111 70%);background-size:cover;background-position:center;"><div class="card-scan"></div></div>
-      <div class="editable-overlay" data-edit-project-image="Rewind"><span>TAP TO CHANGE IMAGE</span><span class="edit-video-link" data-edit-project-video="Rewind" onclick="event.stopPropagation();">or set video path</span></div>
-      <div class="card-year">2025</div>
-      <div class="card-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-      <div class="card-info">
-        <div class="card-cat" data-cat-edit="Rewind">Coming soon</div>
-        <div class="card-title" data-title-edit="Rewind">Coming soon</div>
-        <div class="card-tags"><span class="tag-editable" data-tag-remove="Rewind|||0">Coming soon <b>×</b></span><span class="tag-add" data-tag-add="Rewind">+ ADD TAG</span></div>
-      </div>
-    </div>
-  </div>
+    <div class="work-grid reveal" id="workGrid"><!-- injected by JS from PROJECTS data --></div>
   </div>
 </section>
 
 <!-- THE CRAFT -->
 <section class="atmo-blue" id="craft">
-  <div class="container">
-    <div class="reveal in">
-      <div class="eyebrow">Skillset</div>
-      <h2 class="section-title">THE<br>CRAFT.</h2>
+  <div class="container about-grid reveal">
+    <div class="craft-photo" data-cursor="VIEW" id="craftPhoto">
+      <div class="editable-overlay" data-edit-image="craftPhoto"><span>TAP TO CHANGE PHOTO</span></div>
     </div>
-    <div class="skills-list reveal in" id="skillsList" style="margin-top:50px;">
-    <div class="skill-row">
-      <div class="skill-name">Video Editing</div>
-      <div class="skill-index">01</div>
+    <div>
+      <div class="eyebrow" data-editable="craft.eyebrow">Skillset</div>
+      <h2 class="section-title" data-editable="craft.title">THE<br>CRAFT.</h2>
+      <div class="skills-list" id="skillsList" style="margin-top:36px;"></div>
     </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Storytelling</div>
-      <div class="skill-index">02</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Pacing</div>
-      <div class="skill-index">03</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Retention Editing</div>
-      <div class="skill-index">04</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Motion Graphics</div>
-      <div class="skill-index">05</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Kinetic Typography</div>
-      <div class="skill-index">06</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Color Grading</div>
-      <div class="skill-index">07</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">VFX</div>
-      <div class="skill-index">08</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Compositing</div>
-      <div class="skill-index">09</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Sound Design</div>
-      <div class="skill-index">10</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Beat Sync</div>
-      <div class="skill-index">11</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Speed Ramping</div>
-      <div class="skill-index">12</div>
-    </div>
-  
-    <div class="skill-row">
-      <div class="skill-name">Cinematic Editing</div>
-      <div class="skill-index">13</div>
-    </div>
-  </div>
   </div>
 </section>
 
@@ -928,34 +803,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section>
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">Toolkit</div>
-      <h2 class="section-title">SOFTWARE.</h2>
+      <div class="eyebrow" data-editable="software.eyebrow">Toolkit</div>
+      <h2 class="section-title" data-editable="software.title">SOFTWARE.</h2>
     </div>
-    <div class="software-grid reveal" id="softwareGrid" style="margin-top:44px;">
-    <div class="software-item">
-      <div class="software-icon" style="background:#00005B;"><span style="font-family:var(--disp);font-weight:700;font-size:13px;color:#9999FF">Pr</span></div>
-      <div class="software-name">Adobe Premiere Pro</div>
-      <div class="software-desc">Primary editing &amp; assembly</div>
-    </div>
-  
-    <div class="software-item">
-      <div class="software-icon" style="background:#00005B;"><span style="font-family:var(--disp);font-weight:700;font-size:13px;color:#CF96FF">Ae</span></div>
-      <div class="software-name">Adobe After Effects</div>
-      <div class="software-desc">Motion graphics &amp; VFX</div>
-    </div>
-  
-    <div class="software-item">
-      <div class="software-icon" style="background:#1c1c1c;"><span style="color:#ffffff"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.6"></circle><circle cx="12" cy="12" r="3.2" fill="currentColor"></circle><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></span></div>
-      <div class="software-name">DaVinci Resolve</div>
-      <div class="software-desc">Color grading</div>
-    </div>
-  
-    <div class="software-item">
-      <div class="software-icon" style="background:#001E36;"><span style="font-family:var(--disp);font-weight:700;font-size:13px;color:#31A8FF">Ps</span></div>
-      <div class="software-name">Adobe Photoshop</div>
-      <div class="software-desc">Thumbnails &amp; graphics</div>
-    </div>
-  </div>
+    <div class="software-grid reveal" id="softwareGrid" style="margin-top:44px;"></div>
   </div>
 </section>
 
@@ -963,59 +814,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="atmo-crimson" id="services">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">What I Offer</div>
-      <h2 class="section-title">SERVICES.</h2>
+      <div class="eyebrow" data-editable="services.eyebrow">What I Offer</div>
+      <h2 class="section-title" data-editable="services.title">SERVICES.</h2>
     </div>
-    <div class="services-grid reveal" id="servicesGrid" style="margin-top:44px;">
-    <div class="service-item">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-      <div class="service-num">01</div>
-      <div class="service-title">YouTube Long-Form</div>
-      <div class="service-desc">Story-driven editing, pacing, structure and retention-focused cuts.</div>
-    </div>
-  
-    <div class="service-item">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"></path></svg></div>
-      <div class="service-num">02</div>
-      <div class="service-title">YouTube Shorts</div>
-      <div class="service-desc">Hooks, captions, fast pacing, sound design and motion.</div>
-    </div>
-  
-    <div class="service-item">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4Zm3 0v16M17 4v16M4 9h3M4 15h3M17 9h3M17 15h3" stroke="currentColor" stroke-width="1.4" fill="none"></path></svg></div>
-      <div class="service-num">03</div>
-      <div class="service-title">Cinematic Editing</div>
-      <div class="service-desc">Film-style pacing, color, sound and visual storytelling.</div>
-    </div>
-  
-    <div class="service-item">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2 14 9 21 12 14 15 12 22 10 15 3 12 10 9 12 2Z"></path></svg></div>
-      <div class="service-num">04</div>
-      <div class="service-title">Creative Editing</div>
-      <div class="service-desc">Anime, AMV, movie, music and experimental edits.</div>
-    </div>
-  
-    <div class="service-item">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0" stroke="currentColor" stroke-width="1.6" fill="none"></path><path d="M12 17 16 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path><circle cx="12" cy="17" r="1.4"></circle></svg></div>
-      <div class="service-num">05</div>
-      <div class="service-title">Automotive Editing</div>
-      <div class="service-desc">Cinematic vehicle edits, speed ramps, beat sync and VFX.</div>
-    </div>
-  
-    <div class="service-item">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M5 5h14M12 5v14M9 19h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"></path></svg></div>
-      <div class="service-num">06</div>
-      <div class="service-title">Motion Graphics</div>
-      <div class="service-desc">Typography, text animation, transitions and visual effects.</div>
-    </div>
-  
-    <div class="service-item">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"></circle><circle cx="16" cy="9" r="2.4"></circle><path d="M2.5 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 20c0-2.4-1-4.5-2.6-5.9 1-.6 2.2-.9 3.4-.9 3 0 5.5 2.5 5.5 5.5" stroke="currentColor" stroke-width="1.4" fill="none"></path></svg></div>
-      <div class="service-num">07</div>
-      <div class="service-title">Client Content</div>
-      <div class="service-desc">Custom editing for creators, brands and social media.</div>
-    </div>
-  </div>
+    <div class="services-grid reveal" id="servicesGrid" style="margin-top:44px;"></div>
   </div>
 </section>
 
@@ -1023,8 +825,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section>
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">Transformation</div>
-      <h2 class="section-title">RAW <span class="accent">→</span> FINAL.</h2>
+      <div class="eyebrow" data-editable="compare.eyebrow">Transformation</div>
+      <h2 class="section-title" data-editable="compare.title">RAW <span class="accent">→</span> FINAL.</h2>
     </div>
     <div class="compare reveal" id="compare" style="margin-top:44px;">
       <div class="compare-raw"></div>
@@ -1032,6 +834,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <div class="compare-handle" id="compareHandle"></div>
       <div class="compare-label raw">RAW</div>
       <div class="compare-label final">FINAL</div>
+      <div class="edit-video-btn" data-edit-image="compareRaw" onclick="event.stopPropagation();" style="top:auto;bottom:16px;right:16px;">CHANGE PHOTO</div>
     </div>
   </div>
 </section>
@@ -1040,35 +843,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="atmo-orange">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">Workflow</div>
-      <h2 class="section-title">EDITING<br>PROCESS.</h2>
+      <div class="eyebrow" data-editable="process.eyebrow">Workflow</div>
+      <h2 class="section-title" data-editable="process.title">EDITING<br>PROCESS.</h2>
     </div>
-    <div class="process-list reveal" id="processList" style="margin-top:44px;">
-    <div class="process-item">
-      <div class="process-num">01</div>
-      <div><div class="process-title">Discover</div><div class="process-desc">Understand the footage, the story and the goal before touching the timeline.</div></div>
-    </div>
-  
-    <div class="process-item">
-      <div class="process-num">02</div>
-      <div><div class="process-title">Edit</div><div class="process-desc">Build the structure — pacing, sequencing, first pass assembly.</div></div>
-    </div>
-  
-    <div class="process-item">
-      <div class="process-num">03</div>
-      <div><div class="process-title">Refine</div><div class="process-desc">Color, sound design, motion graphics and detail passes.</div></div>
-    </div>
-  
-    <div class="process-item">
-      <div class="process-num">04</div>
-      <div><div class="process-title">Review</div><div class="process-desc">Feedback, revisions and fine-tuning against the brief.</div></div>
-    </div>
-  
-    <div class="process-item">
-      <div class="process-num">05</div>
-      <div><div class="process-title">Deliver</div><div class="process-desc">Final export, formats and delivery for every platform.</div></div>
-    </div>
-  </div>
+    <div class="process-list reveal" id="processList" style="margin-top:44px;"></div>
   </div>
 </section>
 
@@ -1079,14 +857,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <div class="editable-overlay" data-edit-image="aboutPhoto"><span>TAP TO CHANGE PHOTO</span></div>
     </div>
     <div class="about-text">
-      <div class="eyebrow">Behind The Edit</div>
-      <h2 class="section-title" style="margin-bottom:26px;">BEHIND<br>THE EDIT.</h2>
-      <p id="aboutP1">I'm Sagar Chauhan, a video editor focused on transforming raw footage, ideas and music into engaging visual stories.</p>
-      <p id="aboutP2">I work across short-form, long-form and creative content, adapting my editing style to match the story, platform and audience.</p>
+      <div class="eyebrow" data-editable="about.eyebrow">Behind The Edit</div>
+      <h2 class="section-title" data-editable="about.title" style="margin-bottom:26px;">BEHIND<br>THE EDIT.</h2>
+      <p id="aboutP1" data-editable="about.p1">I'm Sagar Chauhan, a video editor focused on transforming raw footage, ideas and music into engaging visual stories.</p>
+      <p id="aboutP2" data-editable="about.p2">I work across short-form, long-form and creative content, adapting my editing style to match the story, platform and audience.</p>
       <div class="about-socials">
-        <a href="mailto:sagarchauhan.exe@gmail.com" class="social-chip"><svg viewBox="0 0 24 24"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.2.3 7.3 5.9a.8.8 0 0 0 1 0l7.3-5.9A.6.6 0 0 0 19.4 5H4.6a.6.6 0 0 0-.4.8Z"></path></svg> EMAIL</a>
-        <a href="https://www.instagram.com/bysagarchauhan?igsi=ZnA5bTEycWMyeXhi" class="social-chip" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="#E4405F" stroke-width="1.7"></rect><circle cx="12" cy="12" r="4.3" stroke="#E4405F" stroke-width="1.7"></circle><circle cx="17.4" cy="6.6" r="1.15" fill="#E4405F"></circle></svg> INSTAGRAM</a>
-        <a href="javascript:void(0)" class="social-chip" onclick="navigator.clipboard.writeText('bysagarchauhan');this.querySelector('.copy-label').textContent='COPIED ✓';setTimeout(()=&gt;this.querySelector('.copy-label').textContent='DISCORD — bysagarchauhan',1500);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5.8C10 5.2 11 5 12 5s2 .2 3.5.8c1.9 1 3 2.7 3.4 5.4.3 2 .1 3.9-.5 5.6-1 .8-2.3 1.4-3.7 1.7l-.6-1.3c.7-.2 1.3-.5 1.9-.9-.2.1-.4.2-.6.3-2.2 1-4.9 1-7.1 0l-.6-.3c.6.4 1.2.7 1.9.9l-.6 1.3c-1.4-.3-2.7-.9-3.7-1.7-.6-1.7-.8-3.6-.5-5.6.4-2.7 1.5-4.4 3.4-5.4Zm.4 5.4c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Zm6.2 0c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Z" fill="#5865F2"></path></svg> <span class="copy-label">DISCORD — bysagarchauhan</span></a>
+        <a href="mailto:sagarchauhan.exe@gmail.com" class="social-chip"><svg viewBox="0 0 24 24"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.2.3 7.3 5.9a.8.8 0 0 0 1 0l7.3-5.9A.6.6 0 0 0 19.4 5H4.6a.6.6 0 0 0-.4.8Z"/></svg> EMAIL</a>
+        <a href="https://www.instagram.com/bysagarchauhan?igsi=ZnA5bTEycWMyeXhi" class="social-chip" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="#E4405F" stroke-width="1.7"/><circle cx="12" cy="12" r="4.3" stroke="#E4405F" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.15" fill="#E4405F"/></svg> INSTAGRAM</a>
+        <a href="javascript:void(0)" class="social-chip" onclick="navigator.clipboard.writeText('bysagarchauhan');this.querySelector('.copy-label').textContent='COPIED ✓';setTimeout(()=>this.querySelector('.copy-label').textContent='DISCORD — bysagarchauhan',1500);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5.8C10 5.2 11 5 12 5s2 .2 3.5.8c1.9 1 3 2.7 3.4 5.4.3 2 .1 3.9-.5 5.6-1 .8-2.3 1.4-3.7 1.7l-.6-1.3c.7-.2 1.3-.5 1.9-.9-.2.1-.4.2-.6.3-2.2 1-4.9 1-7.1 0l-.6-.3c.6.4 1.2.7 1.9.9l-.6 1.3c-1.4-.3-2.7-.9-3.7-1.7-.6-1.7-.8-3.6-.5-5.6.4-2.7 1.5-4.4 3.4-5.4Zm.4 5.4c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Zm6.2 0c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Z" fill="#5865F2"/></svg> <span class="copy-label">DISCORD — bysagarchauhan</span></a>
       </div>
     </div>
   </div>
@@ -1096,15 +874,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="atmo-violet2" id="resume">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">Credentials</div>
-      <h2 class="section-title" style="margin-bottom:36px;">RESUME.</h2>
+      <div class="eyebrow" data-editable="resume.eyebrow">Credentials</div>
+      <h2 class="section-title" data-editable="resume.title" style="margin-bottom:36px;">RESUME.</h2>
     </div>
     <div class="resume-box reveal">
       <div>
-        <div style="font-family:var(--disp);font-weight:600;font-size:18px;">Sagar Chauhan — Video Editor</div>
+        <div style="font-family:var(--disp);font-weight:600;font-size:18px;" data-editable="resume.name">Sagar Chauhan — Video Editor</div>
         <div class="resume-tags">
-          <span>Profile</span><span>Skills</span><span>Services</span><span>Software</span>
-          <span>Experience</span><span>Education</span><span>Contact</span>
+          <span data-editable="resume.tag1">Profile</span><span data-editable="resume.tag2">Skills</span><span data-editable="resume.tag3">Services</span><span data-editable="resume.tag4">Software</span>
+          <span data-editable="resume.tag5">Experience</span><span data-editable="resume.tag6">Education</span><span data-editable="resume.tag7">Contact</span>
         </div>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -1119,35 +897,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section>
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">Timeline</div>
-      <h2 class="section-title" style="margin-bottom:44px;">EXPERIENCE.</h2>
+      <div class="eyebrow" data-editable="timeline.eyebrow">Timeline</div>
+      <h2 class="section-title" data-editable="timeline.title" style="margin-bottom:44px;">EXPERIENCE.</h2>
     </div>
-    <div class="timeline reveal" id="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">2024 — Present</div>
-      <div class="timeline-title">Freelance Video Editor</div>
-      <div class="timeline-desc">Short-form, long-form and cinematic edits across personal and client projects.</div>
-    </div>
-  
-    <div class="timeline-item">
-      <div class="timeline-date">2023 — 2024</div>
-      <div class="timeline-title">Personal Project Work</div>
-      <div class="timeline-desc">Self-directed edits building range across automotive, music and motion design.</div>
-    </div>
-  </div>
+    <div class="timeline reveal" id="timeline"></div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="atmo-blue">
-  <div class="container">
-    <div class="reveal">
-      <div class="eyebrow">Client Feedback</div>
-      <h2 class="section-title" style="margin-bottom:36px;">CLIENT<br>FEEDBACK.</h2>
+  <div class="container about-grid reveal">
+    <div class="testimonial-photo" data-cursor="VIEW" id="testimonialPhoto">
+      <div class="editable-overlay" data-edit-image="testimonialPhoto"><span>TAP TO CHANGE PHOTO</span></div>
     </div>
-    <div class="coming-soon reveal">
-      <div class="coming-soon-badge">COMING SOON</div>
-      <p>Client testimonials will appear here once projects are completed and reviewed. Nothing here is fabricated.</p>
+    <div>
+      <div class="eyebrow" data-editable="testimonials.eyebrow">Client Feedback</div>
+      <h2 class="section-title" data-editable="testimonials.title" style="margin-bottom:36px;">CLIENT<br>FEEDBACK.</h2>
+      <div class="coming-soon">
+        <div class="coming-soon-badge">COMING SOON</div>
+        <p>Client testimonials will appear here once projects are completed and reviewed. Nothing here is fabricated.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1164,45 +933,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="atmo-crimson">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">Questions</div>
-      <h2 class="section-title" style="margin-bottom:20px;">FAQ.</h2>
+      <div class="eyebrow" data-editable="faq.eyebrow">Questions</div>
+      <h2 class="section-title" data-editable="faq.title" style="margin-bottom:20px;">FAQ.</h2>
     </div>
-    <div class="faq-list reveal" id="faqList">
-    <div class="faq-item" data-i="0">
-      <div class="faq-q"><h3>What type of videos do you edit?</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>Short-form, long-form, cinematic and creative content across platforms.</p></div>
-    </div>
-  
-    <div class="faq-item" data-i="1">
-      <div class="faq-q"><h3>Do you edit both Shorts and long-form?</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>Yes — I adapt pacing, structure and format to whichever platform the video is for.</p></div>
-    </div>
-  
-    <div class="faq-item" data-i="2">
-      <div class="faq-q"><h3>How do I send footage?</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>Google Drive, Dropbox or WeTransfer both work well for raw footage delivery.</p></div>
-    </div>
-  
-    <div class="faq-item" data-i="3">
-      <div class="faq-q"><h3>How long does editing take?</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>Turnaround depends on project scope — I'll give you an estimate after reviewing the brief.</p></div>
-    </div>
-  
-    <div class="faq-item" data-i="4">
-      <div class="faq-q"><h3>How many revisions are included?</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>This varies by project — details are confirmed before work begins.</p></div>
-    </div>
-  
-    <div class="faq-item" data-i="5">
-      <div class="faq-q"><h3>What software do you use?</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>Primarily Adobe Premiere Pro, After Effects and DaVinci Resolve.</p></div>
-    </div>
-  
-    <div class="faq-item" data-i="6">
-      <div class="faq-q"><h3>How can I hire you?</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>Use the contact form below or email sagarchauhan.exe@gmail.com directly.</p></div>
-    </div>
-  </div>
+    <div class="faq-list reveal" id="faqList"></div>
   </div>
 </section>
 
@@ -1210,9 +944,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section id="contact">
   <div class="container">
     <div class="contact-hero reveal">
-      <div class="eyebrow">Get In Touch</div>
-      <h2>LET'S MAKE<br>SOMETHING<br>WORTH WATCHING.</h2>
-      <p>Have a project, video or idea in mind? Let's turn it into something people remember.</p>
+      <div class="eyebrow" data-editable="contact.eyebrow">Get In Touch</div>
+      <h2 data-editable="contact.heading">LET'S MAKE<br>SOMETHING<br>WORTH WATCHING.</h2>
+      <p data-editable="contact.desc">Have a project, video or idea in mind? Let's turn it into something people remember.</p>
       <div class="contact-ctas">
         <a href="mailto:sagarchauhan.exe@gmail.com?subject=Project%20Inquiry" class="btn-primary">HIRE ME →</a>
         <a href="mailto:sagarchauhan.exe@gmail.com" class="btn-ghost">EMAIL ME →</a>
@@ -1220,11 +954,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     </div>
     <div class="contact-grid reveal">
       <div>
-        <div class="eyebrow">Project Inquiry</div>
+        <div class="eyebrow" data-editable="contact_form.eyebrow">Project Inquiry</div>
         <form id="contactForm">
           <div class="contact-row">
-            <div class="form-field"><label>Name</label><input type="text" required=""></div>
-            <div class="form-field"><label>Email</label><input type="email" required=""></div>
+            <div class="form-field"><label>Name</label><input type="text" required></div>
+            <div class="form-field"><label>Email</label><input type="email" required></div>
           </div>
           <div class="contact-row">
             <div class="form-field"><label>Project Type</label>
@@ -1233,17 +967,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
             <div class="form-field"><label>Budget</label><input type="text" placeholder="Optional"></div>
           </div>
           <div class="form-field"><label>Deadline</label><input type="text" placeholder="Optional"></div>
-          <div class="form-field"><label>Message</label><textarea required=""></textarea></div>
+          <div class="form-field"><label>Message</label><textarea required></textarea></div>
           <button type="submit" class="btn-primary submit-btn">SEND PROJECT →</button>
           <div id="formStatus" style="margin-top:16px;font-family:var(--disp);font-size:12px;letter-spacing:.06em;color:var(--blue);display:none;"></div>
         </form>
       </div>
       <div>
-        <div class="eyebrow">Direct</div>
+        <div class="eyebrow" data-editable="contact_direct.eyebrow">Direct</div>
         <div style="display:flex;flex-direction:column;gap:16px;margin-top:10px;">
-          <a href="mailto:sagarchauhan.exe@gmail.com" class="social-chip" style="width:fit-content;"><svg viewBox="0 0 24 24"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.2.3 7.3 5.9a.8.8 0 0 0 1 0l7.3-5.9A.6.6 0 0 0 19.4 5H4.6a.6.6 0 0 0-.4.8Z"></path></svg> sagarchauhan.exe@gmail.com</a>
-          <a href="https://www.instagram.com/bysagarchauhan?igsi=ZnA5bTEycWMyeXhi" target="_blank" rel="noopener" class="social-chip" style="width:fit-content;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="#E4405F" stroke-width="1.7"></rect><circle cx="12" cy="12" r="4.3" stroke="#E4405F" stroke-width="1.7"></circle><circle cx="17.4" cy="6.6" r="1.15" fill="#E4405F"></circle></svg> Instagram — BYSAGARCHAUHAN</a>
-          <span class="social-chip" style="width:fit-content;" onclick="navigator.clipboard.writeText('bysagarchauhan');this.querySelector('.copy-label').textContent='Copied ✓';setTimeout(()=&gt;this.querySelector('.copy-label').textContent='Discord — bysagarchauhan',1500);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5.8C10 5.2 11 5 12 5s2 .2 3.5.8c1.9 1 3 2.7 3.4 5.4.3 2 .1 3.9-.5 5.6-1 .8-2.3 1.4-3.7 1.7l-.6-1.3c.7-.2 1.3-.5 1.9-.9-.2.1-.4.2-.6.3-2.2 1-4.9 1-7.1 0l-.6-.3c.6.4 1.2.7 1.9.9l-.6 1.3c-1.4-.3-2.7-.9-3.7-1.7-.6-1.7-.8-3.6-.5-5.6.4-2.7 1.5-4.4 3.4-5.4Zm.4 5.4c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Zm6.2 0c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Z" fill="#5865F2"></path></svg> <span class="copy-label">Discord — bysagarchauhan</span></span>
+          <a href="mailto:sagarchauhan.exe@gmail.com" class="social-chip" style="width:fit-content;"><svg viewBox="0 0 24 24"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.2.3 7.3 5.9a.8.8 0 0 0 1 0l7.3-5.9A.6.6 0 0 0 19.4 5H4.6a.6.6 0 0 0-.4.8Z"/></svg> sagarchauhan.exe@gmail.com</a>
+          <a href="https://www.instagram.com/bysagarchauhan?igsi=ZnA5bTEycWMyeXhi" target="_blank" rel="noopener" class="social-chip" style="width:fit-content;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="#E4405F" stroke-width="1.7"/><circle cx="12" cy="12" r="4.3" stroke="#E4405F" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.15" fill="#E4405F"/></svg> Instagram — BYSAGARCHAUHAN</a>
+          <span class="social-chip" style="width:fit-content;" onclick="navigator.clipboard.writeText('bysagarchauhan');this.querySelector('.copy-label').textContent='Copied ✓';setTimeout(()=>this.querySelector('.copy-label').textContent='Discord — bysagarchauhan',1500);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5.8C10 5.2 11 5 12 5s2 .2 3.5.8c1.9 1 3 2.7 3.4 5.4.3 2 .1 3.9-.5 5.6-1 .8-2.3 1.4-3.7 1.7l-.6-1.3c.7-.2 1.3-.5 1.9-.9-.2.1-.4.2-.6.3-2.2 1-4.9 1-7.1 0l-.6-.3c.6.4 1.2.7 1.9.9l-.6 1.3c-1.4-.3-2.7-.9-3.7-1.7-.6-1.7-.8-3.6-.5-5.6.4-2.7 1.5-4.4 3.4-5.4Zm.4 5.4c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Zm6.2 0c-.7 0-1.3.7-1.3 1.5s.6 1.5 1.3 1.5c.8 0 1.3-.7 1.3-1.5s-.5-1.5-1.3-1.5Z" fill="#5865F2"/></svg> <span class="copy-label">Discord — bysagarchauhan</span></span>
         </div>
       </div>
     </div>
@@ -1254,8 +988,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="container">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">BYSAGARCHAUHAN</div>
-        <div class="footer-tag">Video Editor — Short-form • Long-form • Cinematic • Creative Content</div>
+        <div class="footer-brand" id="footerBrand">BYSAGARCHAUHAN</div>
+        <div class="footer-tag" data-editable="footer.tag">Video Editor — Short-form • Long-form • Cinematic • Creative Content</div>
       </div>
       <div class="footer-links">
         <div class="footer-col">
@@ -1266,7 +1000,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
           <h4>Connect</h4>
           <a href="mailto:sagarchauhan.exe@gmail.com">Email</a>
           <a href="https://www.instagram.com/bysagarchauhan?igsi=ZnA5bTEycWMyeXhi" target="_blank" rel="noopener">Instagram</a>
-          <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('bysagarchauhan');this.textContent='Copied ✓';setTimeout(()=&gt;this.textContent='Discord — bysagarchauhan',1500);">Discord — bysagarchauhan</a>
+          <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('bysagarchauhan');this.textContent='Copied ✓';setTimeout(()=>this.textContent='Discord — bysagarchauhan',1500);">Discord — bysagarchauhan</a>
         </div>
       </div>
     </div>
@@ -1289,17 +1023,15 @@ const CATEGORIES = [
   {id:'short-form', name:'Short-Form'},
   {id:'music', name:'Music / Beat Sync'},
   {id:'motion', name:'Motion Design'},
-  {id:'fan-edit', name:'Fan Edit'},
 ];
 // Only categories with actual published work show here — add a new one only once a project uses it, so visitors never hit an empty filter.
 
 const PROJECTS = [
-  {title:'Web Slinger', category:'fan-edit', type:'Personal Project', year:'2026', role:'Editor / VFX', tags:['Fan Edit','VFX','Beat Sync'], feature:true, published:true, gradient:'linear-gradient(160deg,#e4432e,#111 70%)', video:'assets/spiderman-reel.mp4', desc:'A high-energy Spider-Man fan edit built around dynamic VFX and beat-synced action cuts.'},
-  {title:'Porsche 911', category:'automotive', type:'Personal Project', year:'2026', role:'Editor / Colorist', tags:['Coming soon'], titleOverride:'Coming soon', catOverride:'Coming soon', feature:true, published:true, gradient:'linear-gradient(160deg,#7c5cff,#111 70%)', desc:'A cinematic automotive edit built around speed ramps and beat-synced cuts, graded for a moody, high-contrast look.'},
-  {title:'Afterglow', category:'cinematic', type:'Personal Project', year:'2026', role:'Editor / Colorist', tags:['Coming soon'], titleOverride:'Coming soon', catOverride:'Coming soon', feature:false, published:true, gradient:'linear-gradient(160deg,#e23b8f,#111 70%)', desc:'A short cinematic piece exploring warm-to-cool color transitions paired with layered ambient sound design.'},
-  {title:'Midnight Run', category:'short-form', type:'Client Project', year:'2026', role:'Editor', tags:['Coming soon'], titleOverride:'Coming soon', catOverride:'Coming soon', feature:false, published:true, gradient:'linear-gradient(160deg,#35c1ff,#111 70%)', desc:'A fast-paced short-form edit built for retention — strong hook, dynamic captions, and tight pacing throughout.'},
-  {title:'Echo Chamber', category:'music', type:'Personal Project', year:'2025', role:'Editor / Motion Designer', tags:['Coming soon'], titleOverride:'Coming soon', catOverride:'Coming soon', feature:false, published:true, gradient:'linear-gradient(160deg,#f7943d,#111 70%)', desc:'A music-driven edit synced tightly to the beat, with motion graphics layered into the transitions.'},
-  {title:'Rewind', category:'motion', type:'Experimental Project', year:'2025', role:'Motion Designer', tags:['Coming soon'], titleOverride:'Coming soon', catOverride:'Coming soon', feature:false, published:true, gradient:'linear-gradient(160deg,#e4432e,#111 70%)', desc:'An experimental motion piece exploring kinetic typography and glitch-style visual effects.'},
+  {title:'Porsche 911', category:'automotive', type:'Personal Project', year:'2026', role:'Editor / Colorist', tags:['Speed Ramp','Beat Sync','VFX','Color Grade'], feature:true, published:true, gradient:'linear-gradient(160deg,#7c5cff,#111 70%)', image:'assets/temp-project-1.jpg', desc:'A cinematic automotive edit built around speed ramps and beat-synced cuts, graded for a moody, high-contrast look.'},
+  {title:'Afterglow', category:'cinematic', type:'Personal Project', year:'2026', role:'Editor / Colorist', tags:['Color Grade','Sound Design'], feature:false, published:true, gradient:'linear-gradient(160deg,#e23b8f,#111 70%)', image:'assets/temp-project-3.webp', desc:'A short cinematic piece exploring warm-to-cool color transitions paired with layered ambient sound design.'},
+  {title:'Midnight Run', category:'short-form', type:'Client Project', year:'2026', role:'Editor', tags:['Hook','Captions','Pacing'], feature:false, published:true, gradient:'linear-gradient(160deg,#35c1ff,#111 70%)', image:'assets/temp-project-2.webp', desc:'A fast-paced short-form edit built for retention — strong hook, dynamic captions, and tight pacing throughout.'},
+  {title:'Echo Chamber', category:'music', type:'Personal Project', year:'2025', role:'Editor / Motion Designer', tags:['Beat Sync','Motion'], feature:false, published:true, gradient:'linear-gradient(160deg,#f7943d,#111 70%)', image:'assets/temp-project-4.webp', desc:'A music-driven edit synced tightly to the beat, with motion graphics layered into the transitions.'},
+  {title:'Rewind', category:'motion', type:'Experimental Project', year:'2025', role:'Motion Designer', tags:['Kinetic Type','VFX'], feature:false, published:true, gradient:'linear-gradient(160deg,#e4432e,#111 70%)', image:'assets/temp-portfolio-title.webp', desc:'An experimental motion piece exploring kinetic typography and glitch-style visual effects.'},
 ];
 // TEMP: images above are placeholders — swap "image" (a real thumbnail/frame) per project when you have final exports. gradient stays as a color-wash overlay.
 
@@ -1347,7 +1079,7 @@ const FAQS = [
   {q:'How can I hire you?', a:'Use the contact form below or email sagarchauhan.exe@gmail.com directly.'},
 ];
 
-const MARQUEE_ITEMS = ['SHORT-FORM','LONG-FORM','CINEMATIC','BEAT SYNC','COLOR GRADE','MOTION DESIGN','VFX','RETENTION EDITING','SPEED RAMPING','SOUND DESIGN','KINETIC TYPOGRAPHY','COMPOSITING','REEL EDITING','YOUTUBE EDITING','INSTAGRAM REELS','PODCAST EDITING','WEDDING FILMS','CORPORATE VIDEOS','MUSIC VIDEOS','VLOG EDITING','TRANSITIONS','CAPTIONS & SUBTITLES','THUMBNAIL DESIGN','PREMIERE PRO','AFTER EFFECTS','DAVINCI RESOLVE','FINAL CUT PRO','CAPCUT','CONTENT CREATION','FAN EDITS','AUTOMOTIVE EDITING','TRAVEL EDITS','PRODUCT VIDEOS','AD EDITING','BRAND VIDEOS','DOCUMENTARY EDITING','GAMING EDITS','SPORTS EDITS','ANIME EDITS','LYRIC VIDEOS','HOOK WRITING','PACING','STORYTELLING','RETENTION HOOKS','VISUAL EFFECTS','GREEN SCREEN','ROTOSCOPING','MASKING','KEYFRAME ANIMATION','TITLE ANIMATION','LOWER THIRDS','AUDIO MIXING','VOICEOVER EDITING','NOISE REDUCTION','LUT GRADING','FILM LOOK','SLOW MOTION','TIME REMAPPING','MULTICAM EDITING','PROXY WORKFLOW','4K EDITING','VERTICAL VIDEO','YOUTUBE SHORTS','TIKTOK EDITING','REELS EDITOR','FREELANCE EDITOR','SOCIAL MEDIA EDITING','CINEMATIC LUTS','B-ROLL EDITING','JUMP CUTS','MATCH CUTS','SCREEN RECORDING EDITS','PHOTO EDITING','THUMBNAIL DESIGN','CHANNEL BRANDING','INTRO & OUTRO DESIGN'];
+const MARQUEE_ITEMS = ['SHORT-FORM','LONG-FORM','CINEMATIC','BEAT SYNC','COLOR GRADE','MOTION DESIGN','VFX','RETENTION EDITING'];
 // TEMP: swap words freely, list repeats seamlessly either way.
 
 function renderMarquee(){
@@ -1373,8 +1105,7 @@ function renderWork(){
   const items = PROJECTS.filter(p=>p.published).sort((a,b)=> (b.feature - a.feature));
   grid.innerHTML = items.map((p,i)=>{
     const img = (typeof EDITS!=='undefined' && EDITS.projectImages && EDITS.projectImages[p.title]) || p.image;
-    const displayTitle = (typeof EDITS!=='undefined' && EDITS.projectText && EDITS.projectText[p.title]?.title) || p.titleOverride || p.title;
-    const displayCat = (typeof EDITS!=='undefined' && EDITS.projectText && EDITS.projectText[p.title]?.category) || p.catOverride || CATEGORIES.find(c=>c.id===p.category)?.name || p.category;
+    const displayTitle = (typeof EDITS!=='undefined' && EDITS.projectText && EDITS.projectText[p.title]?.title) || p.title;
     const tags = (typeof EDITS!=='undefined' && EDITS.projectTags && EDITS.projectTags[p.title]) || p.tags;
     const tagsHtml = tags.map((t,ti)=>
       editing
@@ -1384,11 +1115,12 @@ function renderWork(){
     return `
     <div class="card cardpop ${p.feature ? 'feature':''}" data-cursor="VIEW" data-project="${p.title}" style="animation-delay:${i*90}ms">
       <div class="card-media" style="background-image:${img ? `linear-gradient(160deg, rgba(10,10,12,.25), rgba(10,10,12,.75)), url('${img}')` : p.gradient};background-size:cover;background-position:center;"><div class="card-scan"></div></div>
-      <div class="editable-overlay" data-edit-project-image="${p.title}"><span>TAP TO CHANGE IMAGE</span>${editing ? `<span class="edit-video-link" data-edit-project-video="${p.title}" onclick="event.stopPropagation();">or set video path</span>` : ''}</div>
+      <div class="editable-overlay" data-edit-project-image="${p.title}"><span>TAP TO CHANGE IMAGE</span></div>
+      <div class="edit-video-btn" data-edit-project-video="${p.title}" onclick="event.stopPropagation();" style="top:16px;left:16px;right:auto;">${(typeof EDITS!=='undefined' && EDITS.projectVideos && EDITS.projectVideos[p.title]) ? 'CHANGE VIDEO' : '+ ADD VIDEO'}</div>
       <div class="card-year">${p.year}</div>
       <div class="card-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="card-info">
-        <div class="card-cat" ${editing ? `contenteditable="true" data-cat-edit="${p.title}"` : ''}>${displayCat}</div>
+        <div class="card-cat">${CATEGORIES.find(c=>c.id===p.category)?.name || p.category}</div>
         <div class="card-title" ${editing ? `contenteditable="true" data-title-edit="${p.title}"` : ''}>${displayTitle}</div>
         <div class="card-tags">${tagsHtml}</div>
       </div>
@@ -1398,6 +1130,23 @@ function renderWork(){
   attachProjectModals();
   if(typeof attachEditHooks === 'function') attachEditHooks();
   if(editing) attachTagAndTitleEditing();
+  if(editing) attachProjectVideoEditing();
+}
+
+function attachProjectVideoEditing(){
+  document.querySelectorAll('[data-edit-project-video]').forEach(el=>{
+    el.onclick = (e) => {
+      e.stopPropagation();
+      const title = el.dataset.editProjectVideo;
+      const current = EDITS.projectVideos[title] || '';
+      const url = prompt('Paste a direct video file URL (.mp4/.webm) for "' + title + '":', current);
+      if(url !== null){
+        if(url.trim() === ''){ delete EDITS.projectVideos[title]; } else { EDITS.projectVideos[title] = url.trim(); }
+        saveEdits();
+        renderWork();
+      }
+    };
+  });
 }
 
 function attachTagAndTitleEditing(){
@@ -1406,22 +1155,9 @@ function attachTagAndTitleEditing(){
     el.onblur = () => {
       const key = el.dataset.titleEdit;
       const newText = el.textContent.trim();
-      if(!newText) { el.textContent = PROJECTS.find(p=>p.title===key)?.titleOverride || key; return; }
+      if(!newText) { el.textContent = key; return; }
       EDITS.projectText[key] = EDITS.projectText[key] || {};
       EDITS.projectText[key].title = newText;
-      saveEdits();
-    };
-    el.onclick = (e) => e.stopPropagation();
-  });
-  document.querySelectorAll('[data-cat-edit]').forEach(el=>{
-    forcePlainTextPaste(el);
-    el.onblur = () => {
-      const key = el.dataset.catEdit;
-      const newText = el.textContent.trim();
-      const original = PROJECTS.find(p=>p.title===key)?.catOverride || CATEGORIES.find(c=>c.id===PROJECTS.find(p=>p.title===key)?.category)?.name || key;
-      if(!newText) { el.textContent = original; return; }
-      EDITS.projectText[key] = EDITS.projectText[key] || {};
-      EDITS.projectText[key].category = newText;
       saveEdits();
     };
     el.onclick = (e) => e.stopPropagation();
@@ -1456,25 +1192,27 @@ function attachTagAndTitleEditing(){
 function renderSkills(){
   document.getElementById('skillsList').innerHTML = SKILLS.map((s,i)=>`
     <div class="skill-row">
-      <div class="skill-name">${s}</div>
+      <div class="skill-name"${edA('skill.'+i)}>${getT('skill.'+i, s)}</div>
       <div class="skill-index">${String(i+1).padStart(2,'0')}</div>
     </div>
   `).join('');
+  attachEditableText();
 }
 
 function renderSoftware(){
   const resolveIcon = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
-  document.getElementById('softwareGrid').innerHTML = SOFTWARE.map(s=>{
+  document.getElementById('softwareGrid').innerHTML = SOFTWARE.map((s,i)=>{
     const inner = s.mono
       ? `<span style="font-family:var(--disp);font-weight:700;font-size:13px;color:${s.fg}">${s.mono}</span>`
       : `<span style="color:${s.fg}">${resolveIcon}</span>`;
     return `
     <div class="software-item">
       <div class="software-icon" style="background:${s.bg};">${inner}</div>
-      <div class="software-name">${s.name}</div>
-      <div class="software-desc">${s.desc}</div>
+      <div class="software-name"${edA('software.'+i+'.name')}>${getT('software.'+i+'.name', s.name)}</div>
+      <div class="software-desc"${edA('software.'+i+'.desc')}>${getT('software.'+i+'.desc', s.desc)}</div>
     </div>
   `}).join('');
+  attachEditableText();
 }
 
 const SERVICE_ICONS = {
@@ -1488,49 +1226,54 @@ const SERVICE_ICONS = {
 };
 
 function renderServices(){
-  document.getElementById('servicesGrid').innerHTML = SERVICES.map(s=>`
+  document.getElementById('servicesGrid').innerHTML = SERVICES.map((s,i)=>`
     <div class="service-item">
       <div class="service-icon"><svg viewBox="0 0 24 24">${SERVICE_ICONS[s.icon]||''}</svg></div>
       <div class="service-num">${s.n}</div>
-      <div class="service-title">${s.title}</div>
-      <div class="service-desc">${s.desc}</div>
+      <div class="service-title"${edA('service.'+i+'.title')}>${getT('service.'+i+'.title', s.title)}</div>
+      <div class="service-desc"${edA('service.'+i+'.desc')}>${getT('service.'+i+'.desc', s.desc)}</div>
     </div>
   `).join('');
+  attachEditableText();
 }
 
 function renderProcess(){
-  document.getElementById('processList').innerHTML = PROCESS.map(s=>`
+  document.getElementById('processList').innerHTML = PROCESS.map((s,i)=>`
     <div class="process-item">
       <div class="process-num">${s.n}</div>
-      <div><div class="process-title">${s.title}</div><div class="process-desc">${s.desc}</div></div>
+      <div><div class="process-title"${edA('process.'+i+'.title')}>${getT('process.'+i+'.title', s.title)}</div><div class="process-desc"${edA('process.'+i+'.desc')}>${getT('process.'+i+'.desc', s.desc)}</div></div>
     </div>
   `).join('');
+  attachEditableText();
 }
 
 function renderTimeline(){
-  document.getElementById('timeline').innerHTML = EXPERIENCE.map(e=>`
+  document.getElementById('timeline').innerHTML = EXPERIENCE.map((e,i)=>`
     <div class="timeline-item">
-      <div class="timeline-date">${e.date}</div>
-      <div class="timeline-title">${e.title}</div>
-      <div class="timeline-desc">${e.desc}</div>
+      <div class="timeline-date"${edA('exp.'+i+'.date')}>${getT('exp.'+i+'.date', e.date)}</div>
+      <div class="timeline-title"${edA('exp.'+i+'.title')}>${getT('exp.'+i+'.title', e.title)}</div>
+      <div class="timeline-desc"${edA('exp.'+i+'.desc')}>${getT('exp.'+i+'.desc', e.desc)}</div>
     </div>
   `).join('');
+  attachEditableText();
 }
 
 function renderFaq(){
   document.getElementById('faqList').innerHTML = FAQS.map((f,i)=>`
     <div class="faq-item" data-i="${i}">
-      <div class="faq-q"><h3>${f.q}</h3><div class="faq-icon"></div></div>
-      <div class="faq-a"><p>${f.a}</p></div>
+      <div class="faq-q"><h3${edA('faq.'+i+'.q')}>${getT('faq.'+i+'.q', f.q)}</h3><div class="faq-icon"></div></div>
+      <div class="faq-a"><p${edA('faq.'+i+'.a')}>${getT('faq.'+i+'.a', f.a)}</p></div>
     </div>
   `).join('');
   document.querySelectorAll('.faq-item').forEach(item=>{
-    item.querySelector('.faq-q').addEventListener('click', ()=>{
+    item.querySelector('.faq-q').addEventListener('click', (e)=>{
+      if(e.target.closest('[data-editable]') && isEditing()) return;
       const isOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight=null;});
       if(!isOpen){ item.classList.add('open'); const a=item.querySelector('.faq-a'); a.style.maxHeight=a.scrollHeight+'px'; }
     });
   });
+  attachEditableText();
 }
 
 /* ================= CUSTOM CURSOR ================= */
@@ -1558,20 +1301,20 @@ function attachProjectModals(){
       const p = PROJECTS.find(x=>x.title === card.dataset.project);
       if(!p) return;
       currentModalProject = p.title;
-      const activeVideo = (typeof EDITS!=='undefined' && EDITS.projectVideos && EDITS.projectVideos[p.title]) || p.video;
       const img = (typeof EDITS!=='undefined' && EDITS.projectImages && EDITS.projectImages[p.title]) || p.image;
       const overrideText = (typeof EDITS!=='undefined' && EDITS.projectText && EDITS.projectText[p.title]) || {};
-      document.getElementById('modalCat').textContent = overrideText.category || p.catOverride || CATEGORIES.find(c=>c.id===p.category)?.name || p.category;
-      document.getElementById('modalTitle').textContent = overrideText.title || p.titleOverride || p.title;
+      document.getElementById('modalCat').textContent = CATEGORIES.find(c=>c.id===p.category)?.name || p.category;
+      document.getElementById('modalTitle').textContent = overrideText.title || p.title;
       document.getElementById('modalDesc').textContent = overrideText.desc || p.desc || '';
       document.getElementById('modalYear').textContent = p.year;
       document.getElementById('modalType').textContent = p.type;
       document.getElementById('modalRole').textContent = p.role || '—';
       const tagsOverride = (typeof EDITS!=='undefined' && EDITS.projectTags && EDITS.projectTags[p.title]) || p.tags;
       document.getElementById('modalTags').innerHTML = tagsOverride.map(t=>`<span>${t}</span>`).join('');
-      if(activeVideo){
-        modalMedia.style.background = p.gradient;
-        modalMedia.innerHTML = `<video src="${activeVideo}" controls autoplay muted playsinline loop style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></video><div class="modal-close" id="modalClose">✕</div>`;
+      const vid = (typeof EDITS!=='undefined' && EDITS.projectVideos && EDITS.projectVideos[p.title]) || '';
+      if(vid){
+        modalMedia.style.background = 'var(--bg-1,#0a0a0c)';
+        modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><video src="${vid}" poster="${img||''}" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;background:#000;"></video>`;
         document.getElementById('modalClose').onclick = closeModal;
       } else {
         modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div>`;
@@ -1607,9 +1350,16 @@ if(isDesktop){
 const EDIT_PASSWORD = 'sagar2026'; // change this anytime by editing this line
 const EDITS = JSON.parse(localStorage.getItem('siteEdits') || '{}');
 EDITS.projectImages = EDITS.projectImages || {};
+EDITS.projectVideos = EDITS.projectVideos || {};
 EDITS.projectText = EDITS.projectText || {};
 EDITS.projectTags = EDITS.projectTags || {};
-EDITS.projectVideos = EDITS.projectVideos || {};
+EDITS.text = EDITS.text || {};
+
+/* getT(key, fallback) — returns the saved edit for `key` if one exists, else the original text.
+   edA(key) — returns the contenteditable+data-editable HTML attributes when in edit mode, else ''. */
+function getT(key, fallback){ return (EDITS.text[key] !== undefined) ? EDITS.text[key] : fallback; }
+function isEditing(){ return document.body.classList.contains('edit-mode'); }
+function edA(key){ return isEditing() ? ` contenteditable="true" data-editable="${key}"` : ` data-editable="${key}"`; }
 let currentModalProject = null;
 
 function saveEdits(){
@@ -1623,19 +1373,38 @@ function saveEdits(){
 
 function applyStaticEdits(){
   if(EDITS.heroImg){ const el=document.getElementById('heroImg'); if(el) el.src = EDITS.heroImg; }
-  if(EDITS.aboutPhoto){
-    const el=document.getElementById('aboutPhoto');
-    if(el){ el.style.backgroundImage = `url('${EDITS.aboutPhoto}')`; el.style.backgroundSize='cover'; el.style.backgroundPosition='center'; }
-  }
-  if(EDITS.heroDesc){ const el=document.getElementById('heroDesc'); if(el) el.textContent = EDITS.heroDesc; }
-  if(EDITS.aboutP1){ const el=document.getElementById('aboutP1'); if(el) el.textContent = EDITS.aboutP1; }
-  if(EDITS.aboutP2){ const el=document.getElementById('aboutP2'); if(el) el.textContent = EDITS.aboutP2; }
+  ['aboutPhoto','craftPhoto','testimonialPhoto'].forEach(id=>{
+    if(EDITS[id]){
+      const el=document.getElementById(id);
+      if(el){ el.style.backgroundImage = `url('${EDITS[id]}')`; el.style.backgroundSize='cover'; el.style.backgroundPosition='center'; }
+    }
+  });
   if(EDITS.showreelVideo){
     const v = document.getElementById('showreelVideo');
     if(v){ const src = v.querySelector('source'); if(src){ src.src = EDITS.showreelVideo; v.load(); } }
   }
+  if(EDITS.compareRaw){
+    const el = document.getElementById('compare');
+    if(el) el.style.setProperty('--compare-img', `url('${EDITS.compareRaw}')`);
+  }
 }
 applyStaticEdits();
+
+/* Restores any saved text edit into every element carrying a data-editable key
+   (covers both static markup and freshly-rendered dynamic sections). */
+function restoreEditableText(){
+  document.querySelectorAll('[data-editable]').forEach(el=>{
+    const key = el.dataset.editable;
+    if(key && EDITS.text[key] !== undefined){
+      el.textContent = EDITS.text[key];
+    }
+  });
+  if(EDITS.text['brand.logo'] !== undefined){
+    const footerBrand = document.getElementById('footerBrand');
+    if(footerBrand) footerBrand.textContent = EDITS.text['brand.logo'];
+  }
+}
+restoreEditableText();
 
 /* shared hidden file input for all image uploads */
 const editFileInput = document.createElement('input');
@@ -1652,39 +1421,20 @@ editFileInput.addEventListener('change', () => {
     if(editFileTarget === 'heroImg'){
       EDITS.heroImg = dataUrl;
       document.getElementById('heroImg').src = dataUrl;
-    } else if(editFileTarget === 'aboutPhoto'){
-      EDITS.aboutPhoto = dataUrl;
-      const el = document.getElementById('aboutPhoto');
-      el.style.backgroundImage = `url('${dataUrl}')`; el.style.backgroundSize='cover'; el.style.backgroundPosition='center';
     } else if(editFileTarget && editFileTarget.startsWith('project:')){
       const title = editFileTarget.slice(8);
       EDITS.projectImages[title] = dataUrl;
       renderWork();
+    } else if(editFileTarget === 'compareRaw'){
+      EDITS.compareRaw = dataUrl;
+      document.getElementById('compare').style.setProperty('--compare-img', `url('${dataUrl}')`);
+    } else if(editFileTarget){
+      // generic background-image photo slot (aboutPhoto, craftPhoto, or any future one)
+      EDITS[editFileTarget] = dataUrl;
+      const el = document.getElementById(editFileTarget);
+      if(el){ el.style.backgroundImage = `url('${dataUrl}')`; el.style.backgroundSize='cover'; el.style.backgroundPosition='center'; }
     }
     saveEdits();
-  };
-  reader.readAsDataURL(file);
-});
-
-/* hidden file input for video upload — tap "change video", pick a file from gallery, done. */
-const editVideoInput = document.createElement('input');
-editVideoInput.type = 'file'; editVideoInput.accept = 'video/*'; editVideoInput.style.display='none';
-document.body.appendChild(editVideoInput);
-editVideoInput.addEventListener('change', () => {
-  const file = editVideoInput.files[0];
-  if(!file) return;
-  if(file.size > 8*1024*1024){
-    showEditToast('⚠ Video too big to save in-browser (max ~8MB here). Upload it to your GitHub repo\'s assets folder and use "Paste video link instead".', 6000);
-    const url = prompt('Paste the direct video URL from your repo/hosting instead (e.g. assets/myreel.mp4):', EDITS.showreelVideo || '');
-    if(url){ EDITS.showreelVideo = url; saveEdits(); applyStaticEdits(); }
-    return;
-  }
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    EDITS.showreelVideo = e.target.result;
-    saveEdits();
-    applyStaticEdits();
-    showEditToast('✓ Showreel video updated.', 2600);
   };
   reader.readAsDataURL(file);
 });
@@ -1696,24 +1446,12 @@ function attachEditHooks(){
   document.querySelectorAll('[data-edit-project-image]').forEach(el=>{
     el.onclick = (e) => { e.stopPropagation(); editFileTarget = 'project:' + el.dataset.editProjectImage; editFileInput.click(); };
   });
-  document.querySelectorAll('[data-edit-project-video]').forEach(el=>{
-    el.onclick = (e) => {
-      e.stopPropagation();
-      const title = el.dataset.editProjectVideo;
-      EDITS.projectVideos = EDITS.projectVideos || {};
-      const current = EDITS.projectVideos[title] || '';
-      const path = prompt('Video path/filename (must already be uploaded to GitHub), e.g. assets/myreel.mp4 — leave blank to remove:', current);
-      if(path === null) return;
-      if(path.trim() === ''){ delete EDITS.projectVideos[title]; }
-      else { EDITS.projectVideos[title] = path.trim(); }
-      saveEdits();
-      showEditToast(path.trim() ? '✓ Video linked to this card.' : '✓ Video link removed from this card.', 2600);
-    };
-  });
   document.querySelectorAll('[data-edit-video]').forEach(el=>{
     el.onclick = (e) => {
       e.stopPropagation();
-      editVideoInput.click();
+      const current = EDITS.showreelVideo || '';
+      const url = prompt('Paste a direct video file URL (.mp4/.webm):', current);
+      if(url){ EDITS.showreelVideo = url; saveEdits(); applyStaticEdits(); }
     };
   });
 }
@@ -1732,19 +1470,31 @@ function forcePlainTextPaste(el){
   });
 }
 
-function toggleEditableText(on){
-  ['heroDesc','aboutP1','aboutP2'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.contentEditable = on ? 'true' : 'false';
-    if(on) forcePlainTextPaste(el);
-    el.onblur = on ? (()=>{ EDITS[id] = el.textContent; saveEdits(); }) : null;
-  });
-  ['modalTitle','modalDesc'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.contentEditable = on ? 'true' : 'false';
-    if(on) forcePlainTextPaste(el);
+function attachEditableText(){
+  const editing = isEditing();
+  document.querySelectorAll('[data-editable]').forEach(el=>{
+    el.contentEditable = editing ? 'true' : 'false';
+    if(editing){
+      forcePlainTextPaste(el);
+      if(!el._stopPropBound){
+        el._stopPropBound = true;
+        el.addEventListener('click', e => e.stopPropagation());
+      }
+    }
+    if(!el._genericBlurBound){
+      el._genericBlurBound = true;
+      el.addEventListener('blur', () => {
+        if(el.id === 'modalTitle' || el.id === 'modalDesc') return; // these save into EDITS.projectText via their own listeners below
+        const key = el.dataset.editable;
+        if(!key) return;
+        EDITS.text[key] = el.textContent;
+        saveEdits();
+        if(key === 'brand.logo'){
+          const footerBrand = document.getElementById('footerBrand');
+          if(footerBrand) footerBrand.textContent = el.textContent;
+        }
+      });
+    }
   });
 }
 
@@ -1764,40 +1514,55 @@ document.getElementById('modalDesc').addEventListener('blur', ()=>{
 
 function setEditMode(on){
   document.body.classList.toggle('edit-mode', on);
-  toggleEditableText(on);
   editFab.textContent = on ? '✕' : '✎';
   editFab.title = on ? 'Exit edit mode' : 'Edit this site';
-  renderWork();
+  renderSkills(); renderSoftware(); renderServices(); renderProcess(); renderTimeline(); renderFaq(); renderWork();
+  attachEditableText();
 }
-
-/* Owner-only visibility: the pencil icon stays hidden for every normal visitor.
-   It only appears in a browser that has unlocked it once via the secret link:
-   yoursite.com/?admin=sagar2026  — after that it's remembered on that device/browser
-   (localStorage), so you won't need the link every time. Clients/visitors never see it. */
-(function(){
-  const ADMIN_KEY = 'sagar2026'; // change this anytime, then use ?admin=<newkey> once to re-unlock
-  const params = new URLSearchParams(window.location.search);
-  if(params.get('admin') === ADMIN_KEY){
-    localStorage.setItem('portfolioAdmin','true');
-  }
-  if(localStorage.getItem('portfolioAdmin') === 'true'){
-    document.body.classList.add('admin-mode');
-  }
-})();
 
 const editFab = document.getElementById('editFab');
 const editPwOverlay = document.getElementById('editPwOverlay');
 const editPwInput = document.getElementById('editPwInput');
 const editPwSubmit = document.getElementById('editPwSubmit');
 
-editFab.addEventListener('click', () => {
+function requestEditAccess(){
   const alreadyIn = document.body.classList.contains('edit-mode');
   if(alreadyIn){ setEditMode(false); return; }
   if(sessionStorage.getItem('editUnlocked') === 'true'){ setEditMode(true); return; }
   editPwOverlay.classList.add('open');
   editPwInput.value=''; editPwInput.placeholder='••••••'; editPwInput.style.borderColor='';
   setTimeout(()=>editPwInput.focus(), 100);
-});
+}
+editFab.addEventListener('click', requestEditAccess);
+
+/* ================= SECRET EDIT ACCESS (logo) ================= */
+/* No visible "edit" button for visitors. The owner unlocks edit mode by either:
+   1) clicking/tapping the site logo 5 times quickly, or
+   2) opening the site with ?edit=1 in the URL.
+   Everyone else just sees a normal logo that scrolls to top on a single click. */
+(function(){
+  const navLogo = document.getElementById('navLogo');
+  let clickCount = 0, clickTimer = null;
+  navLogo.addEventListener('click', (e) => {
+    if(isEditing()) return; // already unlocked — behave as normal editable text, no special handling
+    e.preventDefault();
+    clickCount++;
+    clearTimeout(clickTimer);
+    if(clickCount >= 5){
+      clickCount = 0;
+      requestEditAccess();
+      return;
+    }
+    clickTimer = setTimeout(() => {
+      if(clickCount === 1){
+        document.getElementById('home').scrollIntoView({behavior:'smooth'});
+      }
+      clickCount = 0;
+    }, 500);
+  });
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('edit') === '1'){ requestEditAccess(); }
+})();
 function tryUnlock(){
   if(editPwInput.value === EDIT_PASSWORD){
     sessionStorage.setItem('editUnlocked','true');
@@ -2019,6 +1784,8 @@ document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 function closeModal(){
   projectModal.classList.remove('open');
   document.body.classList.remove('modal-lock');
+  const v = modalMedia.querySelector('video');
+  if(v){ v.pause(); }
 }
 
 /* ================= MAGNETIC BUTTONS ================= */
@@ -2061,7 +1828,6 @@ if(isDesktop){
     heroMedia.addEventListener('mouseleave', ()=>{ heroMedia.style.transform = 'perspective(800px) rotateY(0) rotateX(0) scale(1)'; });
   }
 }
-</script><input type="file" accept="image/*" style="display: none;"><input type="file" accept="video/*" style="display: none;">
-
-
-</body></html>
+</script>
+</body>
+</html>
