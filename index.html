@@ -416,6 +416,8 @@ section{position:relative;padding:120px 0;}
   font-family:var(--disp);font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.72);
 }
 .showreel-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,.15);}
+.showreel-player.is-embed .showreel-play,.showreel-player.is-embed .showreel-meta,.showreel-player.is-embed .showreel-progress,.showreel-player.is-embed video{display:none;}
+.showreel-player.is-embed{cursor:default;}
 .showreel-progress-bar{width:34%;height:100%;background:linear-gradient(90deg,var(--violet),var(--blue));}
 
 /* ============ MARQUEE STRIP ============ */
@@ -757,11 +759,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         <h2 class="section-title" data-editable="showreel.title">SHOWREEL<br><span class="accent">/ 2026</span></h2>
       </div>
     </div>
-    <div class="showreel-player reveal" data-cursor="PLAY" id="showreelPlayer">
+    <div class="showreel-player reveal is-embed" data-cursor="PLAY" id="showreelPlayer">
       <!-- TEMP video — swap src with your real showreel export later -->
       <video id="showreelVideo" muted loop playsinline preload="metadata" poster="assets/temp-portfolio-title.webp">
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
       </video>
+      <iframe id="showreelIframe" src="https://streamable.com/e/x6vj9e?autoplay=0" style="display:block;width:100%;height:100%;border:0;position:absolute;inset:0;" allow="autoplay; fullscreen" allowfullscreen></iframe>
       <div class="edit-video-btn" data-edit-video="showreelVideo" onclick="event.stopPropagation();">CHANGE VIDEO LINK</div>
       <div class="showreel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="showreel-meta"><span>SHOWREEL 2026</span><span id="showreelTime">00:00 / 00:00</span></div>
@@ -1149,6 +1152,16 @@ function attachProjectVideoEditing(){
   });
 }
 
+function toEmbeddableVideo(url){
+  // Converts a normal Streamable/YouTube share link into an embeddable iframe URL.
+  // Any other link is treated as a direct video file (.mp4/.webm) and returned as-is.
+  const streamableMatch = url.match(/streamable\.com\/([a-zA-Z0-9]+)/);
+  if(streamableMatch){ return {type:'iframe', src: `https://streamable.com/e/${streamableMatch[1]}?autoplay=1`}; }
+  const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=|youtube\.com\/shorts\/)([a-zA-Z0-9_-]+)/);
+  if(ytMatch){ return {type:'iframe', src: `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1`}; }
+  return {type:'file', src: url};
+}
+
 function attachTagAndTitleEditing(){
   document.querySelectorAll('[data-title-edit]').forEach(el=>{
     forcePlainTextPaste(el);
@@ -1313,8 +1326,13 @@ function attachProjectModals(){
       document.getElementById('modalTags').innerHTML = tagsOverride.map(t=>`<span>${t}</span>`).join('');
       const vid = (typeof EDITS!=='undefined' && EDITS.projectVideos && EDITS.projectVideos[p.title]) || '';
       if(vid){
+        const embed = toEmbeddableVideo(vid);
         modalMedia.style.background = 'var(--bg-1,#0a0a0c)';
-        modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><video src="${vid}" poster="${img||''}" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;background:#000;"></video>`;
+        if(embed.type === 'iframe'){
+          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><iframe src="${embed.src}" style="width:100%;height:100%;border:0;" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+        } else {
+          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><video src="${embed.src}" poster="${img||''}" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;background:#000;"></video>`;
+        }
         document.getElementById('modalClose').onclick = closeModal;
       } else {
         modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div>`;
@@ -1381,7 +1399,18 @@ function applyStaticEdits(){
   });
   if(EDITS.showreelVideo){
     const v = document.getElementById('showreelVideo');
-    if(v){ const src = v.querySelector('source'); if(src){ src.src = EDITS.showreelVideo; v.load(); } }
+    const iframe = document.getElementById('showreelIframe');
+    const player = document.getElementById('showreelPlayer');
+    const embed = toEmbeddableVideo(EDITS.showreelVideo);
+    if(embed.type === 'iframe'){
+      if(iframe){ iframe.src = embed.src; iframe.style.display = 'block'; }
+      if(player){ player.classList.add('is-embed'); }
+      if(v){ v.pause(); }
+    } else {
+      if(player){ player.classList.remove('is-embed'); }
+      if(iframe){ iframe.style.display = 'none'; iframe.src=''; }
+      if(v){ const src = v.querySelector('source'); if(src){ src.src = embed.src; v.load(); } }
+    }
   }
   if(EDITS.compareRaw){
     const el = document.getElementById('compare');
@@ -1729,6 +1758,7 @@ compare.addEventListener('click', e=> setCompare(e.clientX));
   const barEl = document.getElementById('showreelBar');
   function fmt(s){ s=Math.floor(s||0); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
   player.addEventListener('click', function(){
+    if(this.classList.contains('is-embed')) return;
     const playing = this.classList.toggle('is-playing');
     if(playing){ video.play().catch(()=>{}); } else { video.pause(); }
   });
@@ -1786,6 +1816,8 @@ function closeModal(){
   document.body.classList.remove('modal-lock');
   const v = modalMedia.querySelector('video');
   if(v){ v.pause(); }
+  const f = modalMedia.querySelector('iframe');
+  if(f){ f.src = f.src; } // reset iframe to stop background playback
 }
 
 /* ================= MAGNETIC BUTTONS ================= */
