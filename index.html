@@ -411,6 +411,12 @@ section{position:relative;padding:120px 0;}
 }
 .showreel-player video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75;}
 .showreel-player.is-playing .showreel-play{opacity:0;pointer-events:none;}
+.showreel-fullscreen{
+  position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;
+  font-family:var(--disp);font-size:15px;z-index:6;transition:background .3s;
+}
+.showreel-fullscreen:hover{background:rgba(124,92,255,.4);}
 .showreel-player::before{
   content:'';position:absolute;inset:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -782,6 +788,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         <source src="https://files.catbox.moe/78rcvo.mp4" type="video/mp4">
       </video>
       <iframe id="showreelIframe" src="https://drive.google.com/file/d/1kXxt4FigTGpphHNt_PBJtGN5AGOXw1if/preview" style="display:block;width:100%;height:100%;border:0;position:absolute;inset:0;" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="showreel-fullscreen" id="showreelFullscreen" title="Watch fullscreen" onclick="event.stopPropagation();">⛶</div>
       <div class="edit-video-btn" data-edit-video="showreelVideo" onclick="event.stopPropagation();">CHANGE VIDEO LINK</div>
       <div class="showreel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="showreel-meta"><span>SHOWREEL 2026</span><span id="showreelTime">00:00 / 00:00</span></div>
@@ -1364,7 +1371,7 @@ function attachProjectModals(){
         if(embed.type === 'iframe'){
           modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><div class="modal-fullscreen" id="modalFullscreen" title="Watch fullscreen">⛶</div><iframe id="modalPlayerFrame" src="${embed.src}" style="width:100%;height:100%;border:0;" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
         } else {
-          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><div class="modal-fullscreen" id="modalFullscreen" title="Watch fullscreen">⛶</div><video id="modalPlayerFrame" src="${embed.src}" poster="${img||''}" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;background:#000;"></video>`;
+          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><div class="modal-fullscreen" id="modalFullscreen" title="Watch fullscreen">⛶</div><video id="modalPlayerFrame" src="${embed.src}" poster="${img||''}" controls autoplay playsinline style="width:100%;height:100%;object-fit:contain;background:#000;"></video>`;
         }
         document.getElementById('modalClose').onclick = closeModal;
         const fsBtn = document.getElementById('modalFullscreen');
@@ -1460,6 +1467,16 @@ function applyStaticEdits(){
   }
 }
 applyStaticEdits();
+
+document.getElementById('showreelFullscreen')?.addEventListener('click', ()=>{
+  const player = document.getElementById('showreelPlayer');
+  const iframe = document.getElementById('showreelIframe');
+  const v = document.getElementById('showreelVideo');
+  const target = (player && player.classList.contains('is-embed')) ? iframe : v;
+  if(!target) return;
+  if(target.requestFullscreen) target.requestFullscreen();
+  else if(target.webkitRequestFullscreen) target.webkitRequestFullscreen();
+});
 
 /* Restores any saved text edit into every element carrying a data-editable key
    (covers both static markup and freshly-rendered dynamic sections). */
