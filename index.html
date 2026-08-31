@@ -82,12 +82,23 @@ img,video{max-width:100%;display:block;}
 }
 .modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
 .modal-media{aspect-ratio:16/9;position:relative;border-radius:20px 20px 0 0;overflow:hidden;}
+@media(max-width:720px){
+  .modal-overlay{padding:0;}
+  .modal-box{max-height:100vh;border-radius:0;max-width:100%;}
+  .modal-media{aspect-ratio:auto;height:56vh;border-radius:0;}
+}
 .modal-close{
   position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;
   background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;
   font-family:var(--disp);font-size:14px;z-index:5;transition:background .3s;
 }
 .modal-close:hover{background:rgba(124,92,255,.4);}
+.modal-fullscreen{
+  position:absolute;top:18px;right:66px;width:38px;height:38px;border-radius:50%;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;
+  font-family:var(--disp);font-size:15px;z-index:5;transition:background .3s;
+}
+.modal-fullscreen:hover{background:rgba(124,92,255,.4);}
 .modal-body{padding:36px;}
 .modal-cat{font-family:var(--disp);font-size:11px;letter-spacing:.15em;color:var(--blue);text-transform:uppercase;margin-bottom:10px;}
 .modal-title{font-family:var(--disp);font-weight:700;font-size:clamp(28px,4vw,42px);margin-bottom:16px;}
@@ -1041,7 +1052,7 @@ const PROJECTS = [
   {title:'Coming Soon', category:'cinematic', type:'Personal Project', year:'2026', role:'Editor / Colorist', tags:['Coming Soon'], feature:false, published:true, gradient:'linear-gradient(160deg,#e23b8f,#111 70%)', image:'assets/temp-project-3.webp', desc:'A cinematic edit currently in progress — check back soon for the final piece.'},
   {title:'Coming Soon', category:'short-form', type:'Client Project', year:'2026', role:'Editor', tags:['Coming Soon'], feature:false, published:true, gradient:'linear-gradient(160deg,#35c1ff,#111 70%)', image:'assets/temp-project-2.webp', desc:'A short-form edit currently in progress — check back soon for the final piece.'},
   {title:'Coming Soon', category:'music', type:'Personal Project', year:'2025', role:'Editor / Motion Designer', tags:['Coming Soon'], feature:false, published:true, gradient:'linear-gradient(160deg,#f7943d,#111 70%)', image:'assets/temp-project-4.webp', desc:'A music-driven edit currently in progress — check back soon for the final piece.'},
-  {title:'Typography Reel', category:'motion', type:'Experimental Project', year:'2025', role:'Motion Designer', tags:['Kinetic Type','VFX'], feature:false, published:true, gradient:'linear-gradient(160deg,#e4432e,#111 70%)', image:'assets/temp-portfolio-title.webp', desc:'A kinetic typography edit exploring animated text, rhythm-driven transitions and glitch-style visual effects.', video:'https://drive.google.com/file/d/1nA-QJ42copVjHoea7ATGftDJejpCH6dG/view?usp=drivesdk'},
+  {title:'Typography Reel', category:'motion', type:'Experimental Project', year:'2025', role:'Motion Designer', tags:['Kinetic Type','VFX'], feature:true, published:true, gradient:'linear-gradient(160deg,#e4432e,#111 70%)', image:'assets/temp-portfolio-title.webp', desc:'A kinetic typography edit exploring animated text, rhythm-driven transitions and glitch-style visual effects.', video:'https://drive.google.com/file/d/1nA-QJ42copVjHoea7ATGftDJejpCH6dG/view?usp=drivesdk'},
 ];
 // TEMP: images above are placeholders — swap "image" (a real thumbnail/frame) per project when you have final exports. gradient stays as a color-wash overlay.
 
@@ -1124,7 +1135,7 @@ function renderWork(){
     ).join('') + (editing ? `<span class="tag-add" data-tag-add="${p.title}">+ ADD TAG</span>` : '');
     return `
     <div class="card cardpop ${p.feature ? 'feature':''}" data-cursor="VIEW" data-project="${p.title}" style="animation-delay:${i*90}ms">
-      <div class="card-media" style="background-image:${img ? `linear-gradient(160deg, rgba(10,10,12,.25), rgba(10,10,12,.75)), url('${img}')` : p.gradient};background-size:cover;background-position:center;"><div class="card-scan"></div></div>
+      <div class="card-media" data-img-src="${img||''}" data-fallback-gradient="${p.gradient}" style="background-image:${img ? `linear-gradient(160deg, rgba(10,10,12,.25), rgba(10,10,12,.75)), url('${img}')` : p.gradient};background-size:cover;background-position:center;"><div class="card-scan"></div></div>
       <div class="editable-overlay" data-edit-project-image="${p.title}"><span>TAP TO CHANGE IMAGE</span></div>
       <div class="edit-video-btn" data-edit-project-video="${p.title}" onclick="event.stopPropagation();" style="top:16px;left:16px;right:auto;">${(typeof EDITS!=='undefined' && EDITS.projectVideos && EDITS.projectVideos[p.title]) || p.video ? 'CHANGE VIDEO' : '+ ADD VIDEO'}</div>
       <div class="card-year">${p.year}</div>
@@ -1141,6 +1152,19 @@ function renderWork(){
   if(typeof attachEditHooks === 'function') attachEditHooks();
   if(editing) attachTagAndTitleEditing();
   if(editing) attachProjectVideoEditing();
+  verifyMediaImages();
+}
+
+// If a project thumbnail fails to load (broken/missing file), fall back to the
+// colorful gradient instead of leaving the card looking black/empty.
+function verifyMediaImages(){
+  document.querySelectorAll('.card-media[data-img-src]').forEach(el=>{
+    const src = el.getAttribute('data-img-src');
+    if(!src) return;
+    const test = new Image();
+    test.onerror = ()=>{ el.style.backgroundImage = el.getAttribute('data-fallback-gradient'); };
+    test.src = src;
+  });
 }
 
 function attachProjectVideoEditing(){
@@ -1338,11 +1362,20 @@ function attachProjectModals(){
         const embed = toEmbeddableVideo(vid);
         modalMedia.style.background = 'var(--bg-1,#0a0a0c)';
         if(embed.type === 'iframe'){
-          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><iframe src="${embed.src}" style="width:100%;height:100%;border:0;" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><div class="modal-fullscreen" id="modalFullscreen" title="Watch fullscreen">⛶</div><iframe id="modalPlayerFrame" src="${embed.src}" style="width:100%;height:100%;border:0;" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
         } else {
-          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><video src="${embed.src}" poster="${img||''}" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;background:#000;"></video>`;
+          modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div><div class="modal-fullscreen" id="modalFullscreen" title="Watch fullscreen">⛶</div><video id="modalPlayerFrame" src="${embed.src}" poster="${img||''}" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;background:#000;"></video>`;
         }
         document.getElementById('modalClose').onclick = closeModal;
+        const fsBtn = document.getElementById('modalFullscreen');
+        if(fsBtn){
+          fsBtn.onclick = ()=>{
+            const el = document.getElementById('modalPlayerFrame');
+            if(!el) return;
+            if(el.requestFullscreen) el.requestFullscreen();
+            else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+          };
+        }
       } else {
         modalMedia.innerHTML = `<div class="modal-close" id="modalClose">✕</div>`;
         document.getElementById('modalClose').onclick = closeModal;
